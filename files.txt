@@ -1,0 +1,3 @@
+autostart-manager.sh https://www.dropbox.com/scl/fi/tnjy2kxaejh3rk4jn0dm6/autostart-manager.sh?rlkey=qk5a9f421rx0or766kxdiqn4x&st=er6k4amh&dl=1 "Автоматическая_ревизия_автозагрузки"
+
+
