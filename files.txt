@@ -1,3 +1,12 @@
-autostart-manager.sh https://www.dropbox.com/scl/fi/tnjy2kxaejh3rk4jn0dm6/autostart-manager.sh?rlkey=qk5a9f421rx0or766kxdiqn4x&st=er6k4amh&dl=1 "Автоматическая_ревизия_автозагрузки"
-
-
+auto-shortcut.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/auto-shortcut.sh
+create-wine-shortcut.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/create-wine-shortcut.sh
+diagnostics.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/diagnostics.sh
+fix-permissions.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/fix-permissions.sh
+hash.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/hash.sh
+logout-dialog.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/logout-dialog.sh
+menu.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/menu.sh
+mount.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/mount.sh
+Shortcut_Creator|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/Shortcut_Creator
+update-desktop.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/update-desktop.sh
+update.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/update.sh
+upload.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/upload.sh
