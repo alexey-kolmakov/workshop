@@ -4,7 +4,6 @@ diagnostics.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/mai
 fix-permissions.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/fix-permissions.sh
 hash.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/hash.sh
 logout-dialog.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/logout-dialog.sh
-menu.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/menu.sh
 mount.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/mount.sh
 Shortcut_Creator|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/Shortcut_Creator
 update-desktop.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/update-desktop.sh
