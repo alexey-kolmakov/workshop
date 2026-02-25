@@ -17,6 +17,7 @@ safe-eject-interactive.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-w
 script_safety_menu.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/script_safety_menu.sh
 selective_BACKUP_HOME.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/selective_BACKUP_HOME.sh
 selective_beckup_creation.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/selective_beckup_creation.sh
+setup_links.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/setup_links.sh
 shortcut-builder.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/shortcut-builder.sh
 Shortcut_Creator|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/Shortcut_Creator
 site_diagnose.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/site_diagnose.sh
