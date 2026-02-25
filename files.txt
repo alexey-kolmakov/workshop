@@ -1,3 +1,4 @@
+Скрипт-катологизатор.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/Скрипт-катологизатор.sh
 Универсальный_Wine|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/Универсальный_Wine
 apt-update-upgrade.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/apt-update-upgrade.sh
 auto-shortcut.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/auto-shortcut.sh
