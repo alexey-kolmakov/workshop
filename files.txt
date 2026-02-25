@@ -11,6 +11,7 @@ hash.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scrip
 logout-dialog.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/logout-dialog.sh
 make_desktop_auto_clean.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/make_desktop_auto_clean.sh
 make-executable.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/make-executable.sh
+make_shortcut.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/make_shortcut.sh
 mount.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/mount.sh
 n-make-executable.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/n-make-executable.sh
 safe-eject-interactive.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/safe-eject-interactive.sh
@@ -25,6 +26,7 @@ s-wine-master.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/m
 thunar-menu.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/thunar-menu.sh
 touchpad-toggle.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/touchpad-toggle.sh
 update-desktop.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/update-desktop.sh
+update_menu.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/update_menu.sh
 update.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/update.sh
 upload.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/upload.sh
 wine-master-2.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/wine-master-2.sh
