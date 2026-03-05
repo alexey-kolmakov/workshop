@@ -17,6 +17,7 @@ mount.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scri
 n-make-executable.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/n-make-executable.sh
 safe-eject-interactive.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/safe-eject-interactive.sh
 script_safety_menu.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/script_safety_menu.sh
+scripts.html|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/scripts.html
 selective_BACKUP_HOME.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/selective_BACKUP_HOME.sh
 selective_beckup_creation.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/selective_beckup_creation.sh
 setup_links.sh|https://raw.githubusercontent.com/alexey-kolmakov/my-workshop/main/scripts/setup_links.sh
