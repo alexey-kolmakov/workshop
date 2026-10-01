@@ -197,35 +197,31 @@
            
 <form action="https://formsubmit.co/alekolm@tutamail.com" method="POST">
 
-    <!-- Настройки FormSubmit -->
+    <!-- 1. Настройки FormSubmit -->
     <input type="hidden" name="_subject" value="Сообщение с сайта Алексея">
     <input type="hidden" name="_captcha" value="false">
     <input type="hidden" name="_template" value="table">
-
-    <!-- ВАЖНАЯ СТРОКА: Полный адрес страницы спасибо -->
+    
+    <!-- 2. Редирект на страницу "Спасибо" -->
     <input type="hidden" name="_next" value="https://alexey-kolmakov.github.io/workshop/thanks.html">
 
-    <!-- Защита от спама (скрытое поле) -->
+    <!-- 3. ВАЖНО: Этот ID указывает FormSubmit отвечать на поле "email" -->
+    <input type="hidden" name="_replyto" value="email">
+
+    <!-- 4. Защита от спама (скрытое поле) -->
     <input type="text" name="_honey" style="display:none">
 
-    <!-- Поля для пользователя -->
-    <input 
-        type="text" 
-        name="name" 
-        placeholder="Ваше имя" 
-        required>
+    <!-- 5. Поля для пользователя -->
+    <input type="text" name="name" placeholder="Ваше имя" required>
 
-    <textarea 
-        name="message" 
-        placeholder="Введите сообщение..." 
-        required></textarea>
+    <!-- Поле email (теперь оно работает на отправку ответа) -->
+    <input type="email" name="email" placeholder="Ваш Email (для ответа)" required>
 
-    <button type="submit">
-        Отправить сообщение
-    </button>
+    <textarea name="message" placeholder="Введите сообщение..." required></textarea>
+
+    <button type="submit">Отправить сообщение</button>
 
 </form>
-
             <div class="footer">
                
             </div>
