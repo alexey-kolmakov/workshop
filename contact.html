@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Алексей</title>
+
+<style>
+h1 {
+  text-align: center;
+  margin: 35px 0 20px 0 !important;
+}
+
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    min-height:10*vh;
+
+    display:flex;
+    justify*content:center;
+    align-items:ce*ter;
+
+    background:#242424;
+
+   *font-family:Segoe UI, sans-serif;
+*
+
+.card{
+
+    width:540px;
+    max-width:95%;
+
+    background:#333;
+
+    border-radius:14px;
+
+    overflow:hidden;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+
+.header{
+
+    text-align:center;
+    padding:30px 25px 15px;
+}
+
+.avatar{
+
+    margin-bottom:15px;
+}
+
+.avatar img{
+
+    max-width:220px;
+    height:auto;
+}
+
+.name{
+
+    color:white;
+
+    font-size:34px;
+
+    font-weight:600;
+}
+
+.location{
+
+    color:#BDBDBD;
+
+    margin-top:5px;
+
+    font-size:15px;
+}
+
+.about{
+
+    margin-top:15px;
+
+    color:#D0D0D0;
+
+    line-height:1.7;
+}
+
+.separator{
+
+    height:1px;
+
+    background:#4a4a4a;
+
+    margin-top:25px;
+}
+
+.contact{
+
+    padding:25px;
+}
+
+.contact-title{
+
+    text-align:center;
+
+    color:white;
+
+    font-size:22px;
+
+    margin-bottom:20px;
+}
+
+input,
+textarea{
+
+    width:100%;
+
+    border:none;
+
+    border-radius:7px;
+
+    background:#494949;
+
+    color:white;
+
+    padding:12px;
+
+    margin-bottom:15px;
+
+    font-size:15px;
+}
+
+input::placeholder,
+textarea::placeholder{
+
+    color:#B8B8B8;
+}
+
+textarea{
+
+    resize:vertical;
+
+    min-height:130px;
+}
+
+button{
+
+    width:100%;
+
+    padding:14px;
+
+    background:#4CAF50;
+
+    color:white;
+
+    border:none;
+
+    border-radius:7px;
+
+    cursor:pointer;
+
+    font-size:16px;
+}
+
+button:hover{
+
+    background:#43A047;
+}
+
+.footer{
+
+    text-align:center;
+
+    color:#9E9E9E;
+
+    font-size:12px;
+
+    margin-top:18px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="card">
+
+    <div class="header">
+
+        <div class="avatar">
+
+            data:image/png;base64,
+ЗДЕСЬ_БУДЕТ_BASE64_КОД_АВАТАРА
+
+        </div>
+
+        <div class="name">
+            Алексей
+        </div>
+
+        <div class="location">
+            🇩🇪 Stollberg (Erzgebirge), Germany
+        </div>
+
+        <div class="about">
+            Любитель Linux, автоматизации,
+            portable-приложений и интересных
+            технических проектов.
+            <br><br>
+            Буду рад вашему сообщению.
+        </div>
+
+        <div class="separator"></div>
+
+    </div>
+
+    <div class="contact">
+
+        <div class="contact-title">
+            ✉ Написать Алексею
+        </div>
+
+        <form action="https://formsubmit.co/alekolm@tutamail.com" method="POST">
+
+            <input
+                type="hidden"
+                name="_subject"
+                value="Сообщение для Алексея">
+
+            <input
+                type="hidden"
+                name="_captcha"
+                value="false">
+
+            <input
+                type="hidden"
+                name="_template"
+                value="table">
+
+            <input
+                type="text"
+                name="Имя"
+                placeholder="Ваше имя"
+                required>
+
+            <textarea
+                name="Сообщение"
+                placeholder="Введите сообщение..."
+                required></textarea>
+
+            <button type="submit">
+                Отправить сообщение
+            </button>
+
+        </form>
+
+        <div class="footer">
+            Личная электронная визитка
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
