@@ -406,10 +406,19 @@ tr.search-found { animation: highlight 0.5s; }
     /* Базовые стили */
     visibility: hidden;
     opacity: 0;
+    position: absolute;
+    z-index: 9999;
     width: 600px; /* Ширина текста */
     text-align: center;
     padding: 15px;
     border-radius: 8px;
+    font-size: 16px;
+    background-color: transparent;
+    color: #333;
+    border: 0 solid rgba(0, 0, 0, 0);
+    box-shadow: none;
+    transition: opacity 0.3s, visibility 0.3s;
+
     
     /* --- ПРОЗРАЧНЫЙ ФОН --- */
     background-color: transparent;
@@ -420,7 +429,7 @@ tr.search-found { animation: highlight 0.5s; }
     /* ----------------------- */
     
 
-    /* 3. Ключевой момент: позиционирование */
+    /* 3. Позиционирование */
     position: absolute;
     z-index: 9999; /* Поверх всего */
     bottom: -300%; /* Над карточкой */
@@ -623,18 +632,25 @@ tr.search-found { animation: highlight 0.5s; }
     transform: translateX(-50%) translateY(-5px);
 }
 
-/* 📱 АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ ЭКРАНОВ (ширина менее 768px) */
+/* 📱 АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ ЭКРАНОВ */
 @media (max-width: 768px) {
     .custom-tooltip::after {
-        font-size: 13px;    /* Чуть уменьшаем шрифт для компактности */
-        max-width: 220px;   /* Ограничиваем ширину, чтобы точно влезло на любой экран */
-        bottom: auto;       /* Сбрасываем позиционирование сверху... */
-        top: -15%;          /* ...и показываем подсказку ПОД картинкой */
-        transform: translateX(-50%) translateY(10px); /* Меняем направление анимации */
+        font-size: 13px;
+        max-width: 220px;
+        
+        /* --- ИСПРАВЛЕНИЕ ПОЗИЦИОНИРОВАНИЯ --- */
+        bottom: auto;       /* Отключаем привязку к низу */
+        top: 100%;          /* Ставим подсказку СТРОГО ПОД картинку */
+        left: 50%;          /* Возвращаем горизонталь в центр (перебиваем -160%) */
+        margin-top: 10px;   /* Небольшой отступ, чтобы не липла к картинке */
+        
+        transform: translateX(-50%) translateY(10px);
     }
 
-    /* На мобильных подсказка будет мягко выплывать снизу вверх при тапе */
+    /* Состояние при наведении/тапе */
     .custom-tooltip:hover::after {
+        opacity: 1;         /* Добавил, так как в hover-состоянии оно может теряться */
+        visibility: visible;
         transform: translateX(-50%) translateY(0);
     }
 }
@@ -666,154 +682,176 @@ tr.search-found { animation: highlight 0.5s; }
 
 
 
-             <div class="grid">
+           <div class="grid">
 
-             <!-- ПОЧАТОК МЕНЮ 
+<!-- ПОЧАТОК МЕНЮ 
           
             Перехід до розділу "Інтернет сервіси" -           ('services-page')
             Перехід до розділу "Чати зі штучним інтелектом" - ('AI_Chats-page')
             Перехід до розділу "Файлові хостинги" -           ('host-page')
             Перехід до розділу "Послуги" -                    ('State-page')
             Перехід до розділу "Пошта" -                      ('emails-page')
-            Перехід до розділу "Робота з текстом онлайн" -    ('Office-page')
-            
-            Увімкніть двофакторну автентифікацію (2FA), де це можливо
-             -->
+            Перехід до розділу "Робота з текстом онлайн" -    ('Office-page')   -->
        
  <!-- Кнопка: Перехід до розділу "Інтернет сервіси" -->
-        <a href="#" onclick="showPage('services-page')" class="launcher tooltip">
+         <a href="#" onclick="showPage('services-page')" class="launcher tooltip">
          <span class="icon">👨‍💻📡</span>
          <h3>Деякі сервіси в інтернет</h3>
          <span class="info"></span>
-         <span class="tooltip-text">До найпоширеніших сервісів відносяться: зберігання даних; 
-         <br>передача повідомлень та блоків даних; електронна пошта;
-         <br> відеосервіси; організація та управління діалогом партнерів;
-         <br>надання з'єднань та проведення сеансів;
+         <span class="tooltip-text" 
+         style="top:270%; left: 50%; transform: translateX 0%; opacity: 1; min-width: 200px; max-width: 500px;">
+         До найпоширеніших сервісів відносяться: 
+         <br>сервіси зберігання даних; послуги передачі 
+         <br>повідомлень та блоків даних; електронна 
+         <br>пошта; відеосервіси; організація та 
+         <br>управління діалогом партнерів; 
+         <br>надання з'єднань та проведення сеансів
          </span>
-
-         
-        </a>
+         </a>         
 <!-- Кнопка: Перехід до розділу "Чати зі штучним інтелектом" -->
-        <a href="#" onclick="showPage('AI_Chats-page')" class="launcher tooltip">
+         <a href="#" onclick="showPage('AI_Chats-page')" class="launcher tooltip">
          <span class="icon">💬🤖</span>
          <h3>Чати зі штучним інтелектом</h3>
          <span class="info"></span>
-         <span class="tooltip-text">«Чат зі штучним інтелектом» являє собою чат-бота, 
-         <br>який використовує технології штучного інтелекту для розуміння 
-         <br>людської мови та генерації природних відповідей</span>
+         <span class="tooltip-text" style="top:270%; left: 50%; transform: translateX 0%; opacity: 1; min-width: 200px; max-width: 500px;">
+         «Чат зі штучним інтелектом» є різновидом 
+         <br>чат-бота, який використовує технології 
+         <br>штучного інтелекту з метою "розуміння" 
+         <br>текстових або голосових повідомлень 
+         <br>(запитів) та генерації відповідей 
+         <br>у ​​вигляді зрозумілих "людських" фраз</span>
         </a>       
 <!-- Кнопка: Перехід до розділу "Файлові хостинги" -->
         <a href="#" onclick="showPage('host-page')" class="launcher tooltip">
          <span class="icon">🗂️🪎</span>
          <h3>Файлові хостинги</h3>
          <span class="info"></span>
-         <span class="tooltip-text">- Це онлайн-сервіси, що надають віддалене місце 
-         <br>для зберігання, та обміну файлами через Інтернет. 
-         <br>На відміну від веб-хостингу, файлові хостинги призначені 
-         <br>виключно для зберігання та доставки контенту, не виконуючи 
-         <br>серверний код, бази даних або розміщення сайтів</span>
+          <span class="tooltip-text" style="top:270%; left: 50%; transform: translateX 0%; opacity: 1; min-width: 200px; max-width: 500px;">- Це онлайн-сервіси, що надають віддалене 
+          <br>місце для зберігання, та обміну файлами 
+          <br>через Інтернет. На відміну від веб-хостингу, 
+          <br>файлові хостинги призначені виключно 
+          <br>для зберігання та доставки контенту, 
+          <br>не виконуючи серверний код, 
+          <br>бази даних або розміщення сайтів</span>
         </a>
  <!-- Кнопка: Перехід до розділу "Пошта" -->
         <a href="#" onclick="showPage('emails-page')" class="launcher tooltip">
          <span class="icon">📧✉️</span>
          <h3>Мої поштові адреси</h3>
          <span class="info"></span>
-         <span class="tooltip-text"></span>
+        <span class="tooltip-text" style="top:144%; left: 50%; transform: translateX 0%; opacity: 1; min-width: 200px; max-width: 500px;">Якщо за цим посиланням скринька 
+        <br>буде зареєстрована, то вхідні дані 
+        <br>(логін і пароль) можна зберігти 
+        <br>в браузері — щоб надалі входити 
+        <br>відразу до свого поштового акаунту</span>
         </a>
  <!-- Кнопка: Перехід до розділу "Робота з текстом онлайн" -->
         <a href="#" onclick="showPage('Office-page')" class="launcher tooltip">
          <span class="icon">🧑‍💻📑</span>
          <h3>Робота з текстом онлайн</h3>
          <span class="info"></span>
-         <span class="tooltip-text"></span>
+         <span class="tooltip-text" style="top:144%; left: 50%; transform: translateX 0%; opacity: 1; min-width: 200px; max-width: 500px;">Google - перекладач, словник (на порталі 
+         <br>української мови та літератури), посібник 
+         <br>з пошуку асоціацій слів (проект "Мережа 
+         <br>словесних асоціацій"), інструменти роботи
+         <br>з PDF-файлами, семантичний аналіз текстів </span>
         </a>                 
  <!-- Кнопка: Перехід до розділу "Послуги" -->
         <a href="#" onclick="showPage('State-page')" class="launcher tooltip">
          <span class="icon">🏢🏛️</span>
          <h3>Послуги</h3>
          <span class="info"></span>
-         <span class="tooltip-text"></span>
-        </a>   
-
-        </div><!-- ЗАКІНЧЕННЯ МЕНЮ -->
-
-
-         <!-- 3. ОБЛАСТЬ КОНТЕНТУ (ПРИХОВАНІ СТОРІНКИ) -->
-        <div class="content">
-
+        <span class="tooltip-text" style="top:144%; left: 50%; transform: translateX 0%; opacity: 1; min-width: 200px; max-width: 500px;">У цьому розділі дано посилання (URL ) 
+        <br>найбільш часто запитуваних в Інтернет 
+        <br>державних установ та комерційних 
+        <br>організацій, а також конвертери валют</span>
+        </a>  
         
-                 <!-- === Сторінка "Інтернет-сервіси" === -->
+        </div><!-- ЗАКІНЧЕННЯ МЕНЮ -->
+        
+        <!-- 3. ОБЛАСТЬ КОНТЕНТУ (ПРИХОВАНІ СТОРІНКИ) -->
+        
+        <div class="content">
+        
+        <!-- === Сторінка "Інтернет-сервіси" === -->
                
         <div id="services-page" class="page-section">
-
-<!-- === початок хрестика === -->
-       <span onclick="showPage('main-menu')" style="float: right; cursor: pointer; font-size: 30px; font-weight: bold; color: #777; margin: 10px 15px 0 0;">&times;</span>
+        
+        <!-- === початок хрестика === -->
+<span onclick="showPage('main-menu')" style="float: right; cursor: pointer; font-size: 30px; font-weight: bold; color: #777; margin: 10px 15px 0 0;">&times;</span>
 <!-- === кінець хрестика === -->
 
-    <h2 class="section-title">👨‍💻📡&nbsp;&nbsp;Деякі сервіси в Internet</h2>
-    <div class="grid">
+<h2 class="section-title">👨‍💻📡&nbsp;&nbsp;Деякі сервіси в Internet</h2>
 
- <!-- Кнопка: Перехід на сайт "Youtube" -->
+        <div class="grid">
+
+<!-- Кнопка: Перехід на сайт "Youtube" -->
         <a href="https://www.youtube.com/"target="_blank"class="launcher tooltip">
-         <h3>📺&nbsp;&nbsp;Youtube</h3>
-         <span class="info">Найбільший у світі відеохостинг <br>Належить компанії <b>Google</b></span>
-         <span class="tooltip-text"></span>
+        <h3>📺&nbsp;&nbsp;Youtube</h3>
+        <span class="info">Найбільший відеохостинг компанії <b>Google</b></span>
+        <span class="tooltip-text"></span>
         </a> 
 <!-- Кнопка: Перехід на сайт "Music.apple" -->
         <a href="https://music.apple.com/us/search"target="_blank"class="launcher tooltip">
-         <h3>🎸&nbsp;&nbsp;Music.apple.com</h3>
-         <span class="info">Потоковий музичний сервіс, <br>розроблений компанією <b>Apple</b></span>
-         <span class="tooltip-text"></span>
+        <h3>🎸&nbsp;&nbsp;Music.apple.com</h3>
+        <span class="info">Потоковий музичний сервіс компанії <b>Apple</b></span>
+        <span class="tooltip-text"></span>
         </a>
 <!-- Кнопка: Перехід на сайт "Jamendo Music" -->
         <a href="https://www.jamendo.com/?language=ua"target="_blank"class="launcher tooltip">
-         <h3>🎼&nbsp;&nbsp;Jamendo Music</h3>
-         <span class="info">Міжнародна музична платформа. <br>Сервіси компанії розташовані у Люксембурзі</span>
-         <span class="tooltip-text"></span>
+        <h3>🎼&nbsp;&nbsp;Jamendo Music</h3>
+        <span class="info">Міжнародна музична платформа.&nbsp;(Люксембург)</span>
+        <span class="tooltip-text"></span>
         </a>
  <!-- Кнопка: Перехід на сайт "SoundCloud" -->
-        <a href="https://www.allsides.com/unbiased-balanced-news"target="_blank"class="launcher tooltip">
-         <h3>📰&nbsp;&nbsp;AllSides</h3>
-         <span class="info">Оцінює політичну упередженість онлайн-новинних джерел.</span>
-         <span class="tooltip-text"></span>
+        <a href="https://www.ukr.net/"target="_blank"class="launcher tooltip">
+        <h3>📰&nbsp;&nbsp;Ukr.Net</h3>
+        <span class="info"> — Найпопулярніший новинний інтернет-сервіс України</span>
+        <span class="tooltip-text"></span>
         </a>                                          
 <!-- Кнопка: Перехід на сайт "Інтернет-тести 2ip.ua" -->
         <a class="item tooltip" href="https://2ip.ua"target="_blank">
-         <h3>🆔&nbsp;&nbsp;Інтернет-тести 2ip.ua</h3>
-         <span class="info">Все про IP-адресу</span>
-         <span class="tooltip-text"></span>
+        <h3>🆔&nbsp;&nbsp;Інтернет-тести 2ip.ua</h3>
+        <span class="info">Все про IP-адресу</span>
+        <span class="tooltip-text"></span>
         </a>
 <!-- Кнопка: Перехід на сайт "Прибрати фон" -->
         <a class="item tooltip" href="https://www.remove.bg/ru/upload"target="_blank">
-         <h3>🙊&nbsp;&nbsp;Прибрати фон</h3>
-         <span class="info">Прибрати фон із зображення</span>
-         <span class="tooltip-text"></span>
+        <h3>🙊&nbsp;&nbsp;Прибрати фон</h3>
+        <span class="info">Прибрати фон із зображення</span>
+        <span class="tooltip-text"></span>
         </a>
 <!-- Кнопка: Перехід на сайт "Клірне коло" -->
         <a class="item tooltip" href="https://get-color.ru/#9122A0"target="_blank">
-         <h3>⭕&nbsp;&nbsp;Колірне коло</h3>
-         <span class="info">Допомагає вибрати колір</span>
-         <span class="tooltip-text"></span>
+        <h3>⭕&nbsp;&nbsp;Колірне коло</h3>
+        <span class="info">Допомагає вибрати колір</span>
+        <span class="tooltip-text"></span>
         </a>
 <!-- Кнопка: Перехід на сайт "ІloveIMG" -->
         <a class="item tooltip" href="https://www.iloveimg.com/uk"target="_blank">
-         <h3>💯&nbsp;&nbsp;ІloveIMG</h3>
-         <span class="info">Обробляйте тисячі зображень за раз</span>
-         <span class="tooltip-text"></span>
+        <h3>💯&nbsp;&nbsp;ІloveIMG</h3>
+        <span class="info">Дозволяє обробляти тисячі зображень за один раз</span>
+        <span class="tooltip-text"></span>
         </a>
 <!-- Кнопка: Перехід на сайт "Сopyandpasteemoji" -->
         <a class="item tooltip" href="https://getemoji.com/"target="_blank">
-         <h3>⬇️&nbsp;&nbsp;Скопіювати та вставити Емодзі </h3>
-         <span class="info">Від японського «картинка» і «символ»</span>
-         <span class="tooltip-text"></span>
+        <h3>⬇️&nbsp;&nbsp;Скопіювати та вставити Emoji </h3>
+        <span class="info">Емодзі (від японського «картинка» та «знак»)</span>
+        <span class="tooltip-text"></span>
         </a>
         
+        <button
+        class="my-button"
+        style="padding: 1px 30px; font-size: 4px; width: 200px;"
+        onclick="showPage('main-menu')">
+        👈 <b><i>Повернутись до меню</i></b>
+        </button>   
  
-   </div><br>   
+        </div><br>   
    
-    </div><!-- === Кінець сторінки "Інтернет-сервіси" === -->
+</div><!-- === Кінець сторінки "Інтернет-сервіси" === -->
 
-               <!-- === Сторінка "Офісні" === -->
+<!-- === Сторінка "Робота з текстом онлайн" === -->
 
     <div id="Office-page" class="page-section">
 
@@ -821,231 +859,268 @@ tr.search-found { animation: highlight 0.5s; }
        <span onclick="showPage('main-menu')" style="float: right; cursor: pointer; font-size: 30px; font-weight: bold; color: #777; margin: 10px 15px 0 0;">&times;</span>
 <!-- === кінець хрестика === -->
 
-    <h2 class="section-title">🧑‍💻📑&nbsp;&nbsp;Робота з текстом онлайн</h2>
-    <div class="grid">
+       <h2 class="section-title">🧑‍💻📑&nbsp;&nbsp;Робота з текстом онлайн</h2>
+       <div class="grid">
 
- <!-- Кнопка: Перехід в онлайн "Google-перекладач" -->
+<!-- Кнопка: Перехід в онлайн "Google-перекладач" -->
+
         <a class="item tooltip" href="https://translate.google.com/?sl=ru&tl=uk&op=translate"target="_blank">
-         <h3> 🆓&nbsp;&nbsp;Google-перекладач</h3>
-         <span class="info">Зареєстрованим користувачам перекладає краще</span>
-         <span class="tooltip-text"></span>
+        <h3> 🆓&nbsp;&nbsp;Google-перекладач</h3>
+        <span class="info">Зареєстрованим користувачам перекладає краще</span>
+        <span class="tooltip-text"></span>
         </a>
- <!-- Кнопка: Перехід на сайт "Slovnyk.ua" -->
+<!-- Кнопка: Перехід на сайт "Slovnyk.ua" -->
         <a href="https://slovnyk.ua/index.php"target="_blank"class="launcher tooltip">
-         <h3>📘&nbsp;&nbsp;Словник</h3>
-         <span class="info">Портал української мови та культури</span>
-         <span class="tooltip-text"></span>
+        <h3>📘&nbsp;&nbsp;Словник</h3>
+        <span class="info">Портал української мови та культури</span>
+        <span class="tooltip-text"></span>
         </a>
 <!-- Кнопка: Перехід на сайт "Slovnyk.ua" -->
         <a href="https://wordassociations.net/ru/%D0%B0%D1%81%D1%81%D0%BE%D1%86%D0%B8%D0%B0%D1%86%D0%B8%D0%B8-%D0%BA-%D1%81%D0%BB%D0%BE%D0%B2%D1%83/%D0%BA%D0%BE%D0%BF%D1%8B%D1%82%D0%BE?button=%D0%9D%D0%B0%D0%B9%D1%82%D0%B8"target="_blank"class="launcher tooltip">
          <h3>📒&nbsp;&nbsp;Асоціації до слова</h3>
          <span class="info">Проект «Мережа словесних асоціацій»</span>
          <span class="tooltip-text"></span>
-        </a>
+         </a>
 <!-- Кнопка: Перехід на сайт "PDF-24" -->
         <a href="https://tools.pdf24.org/ru/"target="_blank"class="launcher tooltip">
-         <h3>🛍️&nbsp;&nbsp;PDF-24</h3>
-         <span class="info">Інструменти PDF24 &mdash;прямо у браузері</span>
-         <span class="tooltip-text"></span>
+        <h3>🛍️&nbsp;&nbsp;PDF-24</h3>
+        <span class="info">Інструменти PDF24 &mdash;прямо у браузері</span>
+        <span class="tooltip-text"></span>
         </a>
- <!-- Кнопка: Перехід на сайт "PDF-24" -->
+<!-- Кнопка: Перехід на сайт "PDF-24" -->
         <a href="https://www.ilovepdf.com/ru "target="_blank"class="launcher tooltip">
-         <h3>🛍️&nbsp;&nbsp;iLovePDF</h3>
-         <span class="info">Інструменти PDF24 &mdash;прямо у браузері</span>
-         <span class="tooltip-text"></span>
+        <h3>🛍️&nbsp;&nbsp;iLovePDF</h3>
+        <span class="info">Інструменти PDF24 &mdash;прямо у браузері</span>
+        <span class="tooltip-text"></span>
         </a>
- <!-- Кнопка: Перехід на сайт "Istio" -->
+<!-- Кнопка: Перехід на сайт "Istio" -->
         <a href="https://istio.com/uk/text/analyz"target="_blank"class="launcher tooltip">
-         <h3>📜&nbsp;&nbsp;Семантичний аналіз</h3>
-         <span class="info">Працювати можна без реєстрації</span>
-         <span class="tooltip-text"></span>
+        <h3>📜&nbsp;&nbsp;Семантичний аналіз</h3>
+        <span class="info">Працювати можна без реєстрації</span>
+        <span class="tooltip-text"></span>
         </a> 
         
-   </div><br>   
-   
-    </div><!-- === Кінець сторінки "Офісні" === -->
+        </div><br>   
+        <button
+        class="my-button"
+        style="padding: 1px 30px; font-size: 4px; width: 200px;"
+        onclick="showPage('main-menu')">
+        👈 <b><i>Повернутись до меню</i></b>
+        </button>  
+        
+</div><!-- === Кінець сторінки "Робота з текстом онлайн" === -->
 
+<!-- === Сторінка "Чати зі штучним інтелектом" === -->
 
-                   <!-- === Сторінка "Чати зі штучним інтелектом" === -->
-
-    <div id="AI_Chats-page" class="page-section">
+        <div id="AI_Chats-page" class="page-section">
 
 <!-- === початок хрестика === -->
        <span onclick="showPage('main-menu')" style="float: right; cursor: pointer; font-size: 30px; font-weight: bold; color: #777; margin: 10px 15px 0 0;">&times;</span>
 <!-- === кінець хрестика === -->
-    <h2 class="section-title">💬🤖&nbsp;&nbsp;Чати зі штучним інтелектом</h2>
-    <div class="grid">
+
+      <h2 class="section-title">💬🤖&nbsp;&nbsp;Чати зі штучним інтелектом</h2>
+      <div class="grid">
 
 <!-- Кнопка: Перехід на сайт Copilot_Microsoft -->
      <a href="https://copilot.microsoft.com/"class="launcher"target="_blank">
-         <h3>💬&nbsp;&nbsp;Copilot<br></h3>
-         <span class="info">(Чат із штучним інтелектом <br>від Microsoft)</span>
+     <h3>💬&nbsp;&nbsp;Copilot<br></h3>
+     <span class="info">(Чат із штучним інтелектом від Microsoft)</span>
      </a>
 <!-- Кнопка: Перехід на сайт ChatGPT -->
      <a class="item tooltip" href="https://chatgpt.com/"target="_blank">
-         <h3>💭&nbsp;&nbsp;Чат GPT<br></h3>
-         <span class="info">(Чат із штучним інтелектом <br>від компанії OpenAI)</span>
+     <h3>💭&nbsp;&nbsp;Чат GPT<br></h3>
+     <span class="info">(Чат із штучним інтелектом від компанії OpenAI)</span>
      </a>
 <!-- Кнопка: Перехід на сайт Gemini -->
      <a class="item tooltip" href="https://gemini.google.com/app/888f3140787d75a1"target="_blank">
-         <h3>💠&nbsp;&nbsp;Gemini<br></h3>
-         <span class="info">(Чат із штучним інтелектом <br>від Google DeepMind)</span>
-         <span class="tooltip-text"></span>
+     <h3>💠&nbsp;&nbsp;Gemini<br></h3>
+     <span class="info">(Чат із штучним інтелектом від Google DeepMind)</span>
+     <span class="tooltip-text"></span>
      </a>
 <!-- Кнопка: Перехід на сайт Сhatinfo -->
      <a class="item tooltip" href="https://chatinfo.ru/neiroset-pishet-tekst"target="_blank">
-         <h3>📮&nbsp;&nbsp;Сhatinfo<br></h3>
-         <span class="info">Нейронна мережа, <br>що пише тексти на замовлення</span>
-         <span class="tooltip-text"></span>
+     <h3>📮&nbsp;&nbsp;Сhatinfo<br></h3>
+     <span class="info">Нейронна мережа, що пише тексти на замовлення</span>
+     <span class="tooltip-text"></span>
      </a>
 <!-- Кнопка: Перехід на сайт завантаження браузера Brave-->
      <a class="item tooltip" href="https://brave.com/uk/"target="_blank">
-         <h3>🦁&nbsp;&nbsp;Brave<br></h3>
-         <span class="info">Браузер із вбудованим ШІ-помічником <br>та блокувальником реклами</span>
-         <span class="tooltip-text"></span>
+     <h3>🦁&nbsp;&nbsp;Brave<br></h3>
+     <span class="info">Браузер із вбудованим ШІ-помічником та блокувальником реклами</span>
+     <span class="tooltip-text"></span>
      </a>
- <!-- Кнопка: Перехід на сайт Mistral AI-->
+<!-- Кнопка: Перехід на сайт Mistral AI-->
      <a class="item tooltip" href="https://mistral.ai/"target="_blank">
-         <h3>🗼&nbsp;&nbsp;Mistral AI<br></h3>
-         <span class="info">Європейська альтернатива американським гігантам ШІ</span>
-         <span class="tooltip-text"></span>
+     <h3>🗼&nbsp;&nbsp;Mistral AI<br></h3>
+     <span class="info">Європейська альтернатива американським гігантам ШІ</span>
+     <span class="tooltip-text"></span>
      </a>    
      
 
-   </div><br>
+      </div><br>
+      
+        <button
+        class="my-button"
+        style="padding: 1px 30px; font-size: 4px; width: 200px;"
+        onclick="showPage('main-menu')">
+        👈 <b><i>Повернутись до меню</i></b>
+        </button>  
+        
 </div><!-- === Кінець сторінки "Чати зі штучним інтелектом" === -->
 
-         <!-- === Сторінка "Файлові хостинги" === -->
+<!-- === Сторінка "Файлові хостинги" === -->
 
-    <div id="host-page" class="page-section">
+        <div id="host-page" class="page-section">
 
 <!-- === початок хрестика === -->
        <span onclick="showPage('main-menu')" style="float: right; cursor: pointer; font-size: 30px; font-weight: bold; color: #777; margin: 10px 15px 0 0;">&times;</span>
 <!-- === кінець хрестика === -->
 
- <h2 class="section-title">🗂️🪎&nbsp;&nbsp;Файлові хостинги</h2>
-    <div class="grid">
+<h2 class="section-title">🗂️🪎&nbsp;&nbsp;Файлові хостинги</h2>
+        <div class="grid">
+
+<!-- Кнопка: Перехід на сайт "Google диск" -->
+        <a href="https://drive.google.com/drive/my-drive" target="_blank"class="launcher tooltip">
+        <h3>⛅️&nbsp;&nbsp;Google диск</h3>
+        <span class="info">Хмарне сховище даних та платформа для обміну файлами. 
+        <br>(Належить корпорації Google LLC)</span>
+        <span class="tooltip-text"></span>
+        </a>
+        
+<!-- Кнопка: Перехід на сайт "OneDrive.live" -->
+        <a href="https://onedrive.live.com/my" target="_blank"class="launcher tooltip">
+        <h3>📬&nbsp;&nbsp;OneDrive</h3>
+        <span class="info">Хмарний сервіс зберігання файлів, синхронізації даних
+        <br> та спільної роботи (Розроблений компанією Microsoft)</span>
+        <span class="tooltip-text"></span>
+        </a>        
 
 <!-- Кнопка: Перехід на сайт "GitHub" -->
         <a href="https://github.com/" target="_blank"class="launcher tooltip">
-         <h3>🪐&nbsp;&nbsp;GitHub</h3>
-         <span class="info">Найбільша у світі хмарна платформа для хостингу ІТ-проектів <br>(Належить корпорації Microsoft)</span>
-         <span class="tooltip-text"></span>
+        <h3>🪐&nbsp;&nbsp;GitHub</h3>
+        <span class="info">Найбільша у світі хмарна платформа для хостингу ІТ-проектів 
+        <br>(Належить корпорації Microsoft)</span>
+        <span class="tooltip-text"></span>
         </a>
+        
 <!-- Кнопка: Перехід на сайт "pCloud"-->
         <a href="https://my.pcloud.com/"target="_blank"class="launcher tooltip">
-         <h3>⛅&nbsp;&nbsp;pCloud</h3>
-         <span class="info">Безпечне хмарне сховище файлів. <br>(Штаб-квартира у Швейцарії)</span>
-         <span class="tooltip-text"></span>
+        <h3>⛅&nbsp;&nbsp;pCloud</h3>
+        <span class="info">Безпечне хмарне сховище файлів. 
+        <br>(Штаб-квартира у Швейцарії)</span>
+        <span class="tooltip-text"></span>
         </a>
+        
 <!-- Кнопка: Перехід на сайт "MEGA"-->
         <a href="https://mega.nz/register"target="_blank"class="launcher tooltip">
-         <h3>Ⓜ️&nbsp;&nbsp;MEGA</h3>
-         <span class="info">Новозеландський сервіс хмарного зберігання даних та файлообмінник</span>
-         <span class="tooltip-text"></span>
+        <h3>Ⓜ️&nbsp;&nbsp;MEGA</h3>
+        <span class="info">Новозеландський сервіс 
+        <br>хмарного зберігання даних та файлообмінник</span>
+        <span class="tooltip-text"></span>
         </a>
+        
 <!-- Кнопка: Перехід на сайт "Dropbox"-->
         <a href="https://www.dropbox.com"target="_blank"class="launcher tooltip">
-         <h3>📦&nbsp;&nbsp;Dropbox</h3>
-         <span class="info">Хмарне сховище даних та сервіс синхронізації файлів компанії <br>Dropbox Inc.&nbsp;(Сан-Франциско, США)</span>
-         <span class="tooltip-text"></span>
+        <h3>📦&nbsp;&nbsp;Dropbox</h3>
+        <span class="info">Хмарне сховище даних та сервіс синхронізації файлів 
+        <br>компанії Dropbox Inc.&nbsp;(Сан-Франциско, США)</span>
+        <span class="tooltip-text"></span>
         </a>
+        
 <!-- Кнопка: Перехід на сайт "Files.fm"-->
         <a href="https://ua.files.fm/"target="_blank"class="launcher tooltip">
-         <h3>🎴&nbsp;&nbsp;Files.fm</h3>
-         <span class="info">Європейська платформа хмарного зберігання даних та обміну файлами. <br>(Базується у Ризі, Латвія)</span>
-         <span class="tooltip-text"></span>
+        <h3>🎴&nbsp;&nbsp;Files.fm</h3>
+        <span class="info">Європейська платформа хмарного зберігання даних 
+        <br>та обміну файлами. (Базується у Ризі, Латвія)</span>
+        <span class="tooltip-text"></span>
         </a>
-<!-- Кнопка: Перехід на сайт "Google диск" -->
-        <a href="https://drive.google.com/drive/my-drive" target="_blank"class="launcher tooltip">
-         <h3>⛅️&nbsp;&nbsp;Google диск</h3>
-         <span class="info">Хмарне сховище даних та платформа для обміну файлами. <br>(Належить корпорації Google LLC)</span>
-         <span class="tooltip-text"></span>
-        </a>
+
 <!-- Кнопка: Перехід на сайт "Transferxl" -->
         <a href="https://www.transferxl.com/" target="_blank"class="launcher tooltip">
-         <h3>📨&nbsp;&nbsp;Transferxl</h3>
-         <span class="info">Голландський хмарний сервіс для обміну файлами</span>
-         <span class="tooltip-text"></span>
-        </a>         
+        <h3>📨&nbsp;&nbsp;Transferxl</h3>
+        <span class="info">Голландський хмарний сервіс для обміну файлами</span>
+        <span class="tooltip-text"></span>
+        </a> 
+                
 <!-- Кнопка: Перехід на сайт "CryptPad" -->
         <a href="https://cryptpad.fr/drive/ " target="_blank"class="launcher tooltip">
-         <h3>🤦‍♀️&nbsp;&nbsp;CryptPad</h3>
-         <span class="info">Офісний пакет для спільної роботи. Усі дані шифруються <br>до відправки на сервер</span>
-         <span class="tooltip-text"></span>
+        <h3>🤦‍♀️&nbsp;&nbsp;CryptPad</h3>
+        <span class="info">Офісний пакет для спільної роботи. 
+        <br>Усі дані шифруються до відправки на сервер</span>
+        <span class="tooltip-text"></span>
         </a>
-<!-- Кнопка: Перехід на сайт "OneDrive.live" -->
-        <a href="https://onedrive.live.com/my" target="_blank"class="launcher tooltip">
-         <h3>📬&nbsp;&nbsp;OneDrive</h3>
-         <span class="info">Хмарний сервіс зберігання файлів, синхронізації даних та спільної роботи <br>(Розроблений компанією Microsoft)</span>
-         <span class="tooltip-text"></span>
-        </a>
-      
-  
-   </div><br>
-   
-   </div><!-- === Кінець сторінки "Файлові хостинги" === -->
+        
+        </div><br>
+        
+        <button
+        class="my-button"
+        style="padding: 1px 30px; font-size: 4px; width: 200px;"
+        onclick="showPage('main-menu')">
+        👈 <b><i>Повернутись до меню</i></b>
+        </button>  
+        
+</div><!-- === Кінець сторінки "Файлові хостинги" === -->
 
-          <!-- === Сторінка "Послуги" === -->
+<!-- === Сторінка "Послуги" === -->
 
-    <div id="State-page" class="page-section">
+        <div id="State-page" class="page-section">
 
 <!-- === початок хрестика === -->
        <span onclick="showPage('main-menu')" style="float: right; cursor: pointer; font-size: 30px; font-weight: bold; color: #777; margin: 10px 15px 0 0;">&times;</span>
+       
 <!-- === кінець хрестика === -->
 
     <h2 class="section-title">🏢🏛️&nbsp;&nbsp;Послуги</h2>
     <div class="grid">
-
-
+    
 
 <!-- Кнопка: Перехід на сайт Privat24 -->
         <a href="https://next.privat24.ua/"target="_blank"class="launcher tooltip">
-         <h3>🏪&nbsp;&nbsp;Privat24</h3>
-         <span class="info">Система інтернет-банкінгу</span>
-         <span class="tooltip-text"></span>
+        <h3>🏪&nbsp;&nbsp;Privat24</h3>
+        <span class="info">Система інтернет-банкінгу</span>
+        <span class="tooltip-text"></span>
         </a>
 <!-- Кнопка: Перехід на сайт Пенсійного фонду України -->       
         <a href="https://portal.pfu.gov.ua/"target="_blank"class="launcher tooltip">
-         <h3>🏫&nbsp;&nbsp;ПФУ</h3>
-         <span class="info">Портал Електронних Послуг</span>
-         <span class="tooltip-text"></span>
+        <h3>🏫&nbsp;&nbsp;ПФУ</h3>
+        <span class="info">Портал Електронних Послуг</span>
+        <span class="tooltip-text"></span>
         </a>
 <!-- Кнопка: Перехід на сайт "Податкової" -->
         <a href="https://cabinet.tax.gov.ua/login"target="_blank"class="launcher tooltip">
-         <h3>🏦&nbsp;&nbsp;Податкова</h3>
-         <span class="info">Електронний Кабінет</span>
-         <span class="tooltip-text"></span>
+        <h3>🏦&nbsp;&nbsp;Податкова</h3>
+        <span class="info">Електронний Кабінет</span>
+        <span class="tooltip-text"></span>
         </a>
 <!-- Кнопка: Перехід на сайт "Нової Пошти" -->
         <a href="https://novaposhta.ua/"target="_blank"class="launcher tooltip">
-         <h3>🏨&nbsp;&nbsp;Нова пошта</h3>
-         <span class="info">Компанія експрес-доставки</span>
-         <span class="tooltip-text"></span>
+        <h3>🏨&nbsp;&nbsp;Нова пошта</h3>
+        <span class="info">Компанія експрес-доставки</span>
+        <span class="tooltip-text"></span>
         </a>
 <!-- Кнопка: Перехід на сайт  "Liga.net"-->
         <a href="https://finance.liga.net/ua/currency/converter"target="_blank"class="launcher tooltip">
-         <h3>💱️&nbsp;&nbsp;Конвертер валют</h3>
-         <span class="info">LIGA.net</span>
-         <span class="tooltip-text"></span>
+        <h3>💱️&nbsp;&nbsp;Конвертер валют</h3>
+        <span class="info">LIGA.net</span>
+        <span class="tooltip-text"></span>
         </a>
 <!-- Кнопка: Перехід на сайт "Finance.i.ua" -->
         <a href="https://finance.i.ua/converter/"target="_blank"class="launcher tooltip">
-         <h3>💱️&nbsp;&nbsp;Конвертер валют</h3>
-         <span class="info"> I.UA</span>
-         <span class="tooltip-text"></span>
+        <h3>💱️&nbsp;&nbsp;Конвертер валют</h3>
+        <span class="info"> I.UA</span>
+        <span class="tooltip-text"></span>
         </a>
 <!-- Кнопка: Перехід на сайт "ЄЛіки" -->
         <a href="https://eliky.in.ua/"target="_blank"class="launcher tooltip">
-         <h3>💊&nbsp;&nbsp;Проект ЄЛіки</h3>
-         <span class="info">Зручність для пацієнта</span>
-         <span class="tooltip-text"></span>
+        <h3>💊&nbsp;&nbsp;Проект ЄЛіки</h3>
+        <span class="info">Зручність для пацієнта</span>
+        <span class="tooltip-text"></span>
         </a>
 <!-- Кнопка: Перехід на сайт "Аптека 9.1.1" -->
         <a href="https://apteka911.ua/ua/map/ukraina"target="_blank"class="launcher tooltip">
-         <h3>⚗️&nbsp;&nbsp;Аптека 9.1.1</h3>
-         <span class="info">Сучасна електронна система.</span>
-         <span class="tooltip-text"></span>
+        <h3>⚗️&nbsp;&nbsp;Аптека 9.1.1</h3>
+        <span class="info">Сучасна електронна система.</span>
+        <span class="tooltip-text"></span>
         </a>
 
 <!-- Кнопка: Перехід на сайт "Аптека 9.1.1 (Довідник ліків)" -->
@@ -1060,140 +1135,141 @@ tr.search-found { animation: highlight 0.5s; }
          <span class="info">Доступ до державних даних</span>
          <span class="tooltip-text"></span>
         </a>
-
 <!-- Кнопка: Перехід на сайт "Нафтогаз України" -->
         <a href="https://my.gas.ua/"target="_blank"class="launcher tooltip">
-         <h3>💥️&nbsp;&nbsp;"Нафтогаз України"</h3>
-         <span class="info">Особистий кабінет на сайті</span>
-         <span class="tooltip-text"></span>
+        <h3>💥️&nbsp;&nbsp;"Нафтогаз України"</h3>
+        <span class="info">Особистий кабінет на сайті</span>
+        <span class="tooltip-text"></span>
         </a>
 <!-- Кнопка: Перехід на сайт "АТ"Харківобленерго"" -->
-        <a href="https://www.oblenergo.kharkov.ua/uk/transmissionofmeterreadings"target="_blank"class="launcher tooltip">
-         <h3>⚡️&nbsp;&nbsp;АТ"Харківобленерго"</h3>
-         <span class="info">Особистий кабінет на сайті</span>
-         <span class="tooltip-text"></span>
-        </a>                              
- 
-              
-   </div><br>
-   
+        <a href="https://www.oblenergo.kharkov.ua/uk/transmissionofmeterreadings"
+        target="_blank"class="launcher tooltip">
+        <h3>⚡️&nbsp;&nbsp;АТ"Харківобленерго"</h3>
+        <span class="info">Особистий кабінет на сайті</span>
+        <span class="tooltip-text"></span>
+        </a>
+        
+        </div><br>
+        
+        <button
+        class="my-button"
+        style="padding: 1px 30px; font-size: 4px; width: 200px;"
+        onclick="showPage('main-menu')">
+        👈 <b><i>Повернутись до меню</i></b>
+        </button>   
   
-    </div><!-- === Кінець сторінки "послуги" === -->
+</div><!-- === Кінець сторінки "Послуги" === -->
 
+<!-- === Сторінка "ПОШТА" === -->
+
+         <div id="emails-page" class="page-section">
          
-                      
-            <!-- === Сторінка "ПОШТА" === -->
-            <div id="emails-page" class="page-section">
 <!-- === початок хрестика === -->
-       <span onclick="showPage('main-menu')" style="float: right; cursor: pointer; font-size: 30px; font-weight: bold; color: #777; margin: 10px 15px 0 0;">&times;</span>
+
+       <span onclick="showPage('main-menu')" 
+       style="float: right; cursor: pointer; font-size: 30px; font-weight: bold; color: #777; margin: 10px 15px 0 0;">&times;</span>
+       
 <!-- === кінець хрестика === -->
 
             <h2 class="section-title">📩&nbsp;&nbsp;email</h2>
-               <class="section-title">
-               <div class="grid">
+            <class="section-title">
+            <div class="grid">
 
-           <a href="https://mail.google.com/mail/"
-            target="_blank" onclick="showPage('Х-page')" class="launcher tooltip">
-                <span class="icon">📩</span>
-                <h3>mail@gmail.com</h3>
-                <span class="info">Безкоштовний сервіс електронної пошти <br>від <b>Google</b></span>
-                <span class="tooltip-text"></span>
+           <a href="https://mail.google.com/mail/" target="_blank" onclick="showPage('Х-page')" 
+           class="launcher tooltip">
+           <span class="icon"></span>
+            <h3>📩&nbsp;&nbsp;mail@gmail.com</h3>
+            <span class="info">Безкоштовний сервіс електронної пошти від <b>Google</b></span>
+            <span class="tooltip-text"></span>
             </a>
 
             <a href="https://mail.meta.ua/?"
             target="_blank" onclick="showPage('Х-page')" class="launcher tooltip">
-                <span class="icon">📩</span>
-                <h3>mail@meta.ua</h3>
-                <span class="info">Український інформаційний портал. 
-                <br>Сервер — у провайдера <b>«Харків-онлайн»</b></span>
-                <span class="tooltip-text"></span>
+            <span class="icon"></span>
+            <h3>📩&nbsp;&nbsp;mail@meta.ua</h3>
+            <span class="info">Український інформаційний портал. (провайдер 
+            <b>«Харків-онлайн»</b>)</span>
+            <span class="tooltip-text"></span>
             </a>
 
             <a href="http://www.i.ua/?domain=email.ua"
             target="_blank" onclick="showPage('Х-page')" class="launcher tooltip">
-                <span class="icon">📩</span>
-                <h3>mail@email.ua</h3>
-                <span class="info">Український інтернет-портал <br>та сервіс електронної пошти. 
-                <br>Власник <b>"Український медіахолдинг" (УМХ)</b></span>
-                <span class="tooltip-text"></span>
+            <span class="icon"></span>
+            <h3>📩&nbsp;&nbsp;mail@email.ua</h3>
+            <span class="info">Український інтернет-портал <b>"Український медіахолдинг"</b></span>
+            <span class="tooltip-text"></span>
             </a>
 
-       </div><br>
+            </div><br>
        
-   <button
-   class="my-button"
-   style="padding: 1px 30px; font-size: 4px; width: 200px;"
-   onclick="showPage('main-menu')">
-   👈 <b><i>Повернутись до меню</i></b>
-   </button>
-</div>   <!-- Кінець сторінки "ПОШТА" -->
-
+        <button
+        class="my-button"
+        style="padding: 1px 30px; font-size: 4px; width: 200px;"
+        onclick="showPage('main-menu')">
+        👈 <b><i>Повернутись до меню</i></b>
+        </button>  
+        
+</div><!-- Кінець сторінки "ПОШТА" -->
 
 <!-- === Сторінка "Моя бібліотека PDF" === -->
 
-<div id="pdf-library" class="page-section">
-
-<span onclick="showPage('main-menu')" style="float: right; cursor: pointer; font-size: 30px; font-weight: bold; color: #777; margin: 10px 15px 0 0;">&times;</span>
+          <div id="pdf-library" class="page-section">
+          <span onclick="showPage('main-menu')" 
+          style="float: right; cursor: pointer; font-size: 30px; font-weight: bold; color: #777; margin: 10px 15px 0 0;">&times;</span>
 
    
-    <div class="grid" id="library">
+         <div class="grid" id="library">
 
-    </div><br>
-   <button
-   class="my-button"
-   style="padding: 1px 30px; font-size: 4px; width: 200px;"
-   onclick="showPage('main-menu')">
-   👈 <b><i>Повернутись до меню</i></b>
-   </button>
+         </div><br>
+         
+        <button
+        class="my-button"
+        style="padding: 1px 30px; font-size: 4px; width: 200px;"
+        onclick="showPage('main-menu')">
+        👈 <b><i>Повернутись до меню</i></b>
+        </button>  
 
 </div>
 
-  </div> <!-- Кінець .content -->
+</div> <!-- Кінець .content -->
+
 </div> <!-- Кінець .menu -->
 
-
 <!-- === СТОРІНКА: "Інформація" === -->
-<div id="my-alert-overlay" class="alert-overlay">
-    <div class="alert-box" style="position: relative; padding: 40px; background-color: #ffffff !important; border-radius: 12px; max-width: 550px; margin: 120px auto; box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: block !important; border: none !important;">
 
-
+       <div id="my-alert-overlay" class="alert-overlay">
+       <div class="alert-box" style="position: relative; padding: 40px; background-color: #ffffff !important; border-radius: 12px; max-width: 550px; margin: 120px auto; box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: block !important; border: none !important;">
 
         <div class="alert-content" style="font-family: sans-serif; line-height: 1.6; color: #333333 !important;">
+        
 <!-- === блок крестика === -->
 <span class="close-icon" id="close-x-btn" style="position: absolute; top: 15px; right: 20px; cursor: pointer; font-size: 30px; font-weight: bold; color: #777777 !important; z-index: 9999;">&times;</span>
 <!-- === конец блока крестика === -->
-<!-- === Фото === -->
+
+<!-- === Фото === --> 
+
             <h1>
             <div style="text-align: center;">
             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOAAAAEsCAMAAADtrk+oAAADAFBMVEVHcExNOiIWCwMvHQsSCAJcQiVeRShMNx4cDQRVQSkjFAkfEQYUEAcnFgcsGQZhSCsqGww+KxRmTC8yIQ42JRBBLxcMAwBEMhpgRilQOh9INh65fFc6KBQlGQ4sIBIxIxR9ZUmbfmAeFgsRDQM1KBmCa06VdlhmV0BGOCamhmcYEQiVe12ggmTl3MqtdFFENCE/MSHNwqtKPCu/sZqrjGxQPypzYUhXQSZyaU67sJuykXGzpo68s5+ejHKaiG25f1yij3RyY02VgmhPPCOilXyDbVN5ZUuNf2d5bVaQfmduWkJ8bVVqXEeWiHKIfGeei3C4q5aAdWBaTDmqnoieiWyik3yrmYCzp4+Qf2dSQzCypIplUTexlnarnIOFblOWiXNgTjRmUz1KMhVPNxtNNRlLNRxUOx9WPiBNMxpPNxlJNBtROR1TOh1MMxdCLBNFMBZHLhNHMhpIMBRDLhVELBBQOBs6Jw9HMRdSPiVFLhI9KRBJNBhQPSMjEQSyclBFLBNaQCJCKQ5kSixAKxE5JAxYPyS2dlJKMhk2IgpQNyBbRy8hDQJSORuvcE0/Jw1XPCBZRCy+f1iHWDpfSjA8JAunbk1aQSlqTzJaQCVTOiNVPSKha0ozHgdhTjWZY0RsVDuOYEGaXT+JWz5dOyJ5YEJeRC2IUjZwUzdmTzaaaUhZNh58UDWOVDlxRy5sUTZwVzx0Wz9nUjlrRSyIbE+BVTpiPyZHLRaOWTyUXkA7LRyBUjV7TDB2SzCVWTt3RiuTZEWsbUuoaEmfYEFnQil2UDaATjB1XUNhNRxjSzJlOyKBZkqOdVh7VTpxQyl7Wz9rQCWCWj5yTDNcSzSGZ0qBYUWGTjJsWD6gZEVhUTqOb1GKcVR6YUZaMBelZUV1VjtNLRZUMhpyPiN9RyuGX0JrSzCNZ0lGJxFwW0LBgVxsOB94QidTLhWyeVW4dVeDSS9MKBFrX0eMTzWge1s5HQlURDFWKBCcdFNCHgqWbk+/e15OIQs0FQRjLBTHg2WndlSnf14Zya+qAAAAmHRSTlMA/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7//v7+/v7+/v7+/v7+//79/v4G/v7+Ev4i/v7+/v03/m5SS/3+MORd+o5/ouP8lcTK9HnAsZH3+ajO99fl+/fD4/fx5O/v1P///////////////////////////////////////////////////////////////////////nioLI8AACAASURBVHja7JfvTxp5HseXnfRQCOxMZiZEOjBPSOCJBSG4Na2Jmtb6+7Z293bdJtv29poQbw/ruUc5UzVGtqKJ2KPQnJUaI2lzYnhCZHQsWe3iPuiDjVuSizzZwIOLT+5BTeQPuPd32N6/AN3Mm8wEcB7w8vP+vD+f7wcfqFKlSpUqVapUqVKlSpUqVapUqVKlSpUqVapUqVKlSpUqVapUqap7Nbd4PJ6W5t8WU/M7Hk/71e6+O3fu9HUPtnc0/zbq1dY12Nvbe7WrDRrsG3HKIifYbLJ35Gav5z13Ypun7fKVoc6B4YLX4RwZ+OqrzhGrjmZFUXY53RW3S+6/1NbW0eFpeQ/pOrp6h/r7h4Y6h102kRVcNpq2uWRrQ4OBpkWbzeZyuJ02nTzQeXP45p3uwbb3y63Nnqt9tyter8PhtFE0JVI2F4xppS06HS3SBtHpQgkhh8zJssvtdYx09r43iHBm+2D/sIkxmc0yaAwUxco2URStBp3FYqCtrCg7He5KxQ0VKpViwVvBh+H+Qc97QUdCsrOoEQSTkxcEjgUeiGwsSC0Wq0VnsZHaub1et8PhqJye2u3FSmG4iNvAUHtzvRuz62rfzRGNiecFVuAZ1kjoWFGQRYqmrTQund7qdLhkh9vhQhO6i0W3y+WSZUEpaLFzsJ7Tprm9u7Po5Sf94ybexAgCI3AixwGQE4hTLVaRtlj0eivsim9km8td8bpl8LO0jkKjorLugfqdGy1d3QPPGoPaMWh81MkDD2yszFE2ki5oPatBr4NPaTSjSHEuB2roEnV6UlkrCydTrCA77UOX67OI7d0DhceLjSvBplHwjSt4+M0UR1E2kaYRnlZap8eLJlmKXLWRrwk30kd2Ep8KgiC7Cj3XLtVhEVsGOyvBxceNGq1GOzEBvl/xKMqIJgSeXmchfBa9zgpQHUYhDbfiDUUSVYPIwUhB9nhbe3qufeKpt6zp6B7RED7tGHEmY2IS1K988B1H0QawkPbTES6dvkGHcagjH600KyNQ3Q4yKDA2vRV7z/Uv/vBJW32FS9edysfPnzeO+icD4UQ4FODCLAlPBZLliBMb9BaA6S1Wq0Xf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"        
-            style="width: 60px !important;
+            style="width:120px !important;
              height: auto !important;
              position: relative !important;
-             left: 0px !important;
-             top:  -50px !important;
+             left: 6px !important;
+             top:  30px !important;
          "id="logo-trigger" class="header-logo" alt="Омніканальність у HTML-лаунчерах" </div></a>
 </div>
     </h1>
-    <div class="media-block">
-    <div class="media-block__title">&nbsp;&nbsp;&nbsp;У сучасному динамічному світі, де ІТ-технології проникають у всі сфери нашого життя, ми більше не задовольняємося розрізненими точками доступу до тих чи інших ресурсів в <b>Internet</b>.
-
-      <br><div style="text-align: center;">&nbsp;Саме тут на сцену виходить&nbsp;<u><b><i>Омніканальність</i></b></u></div>
-       <br>У HTML-лаунчерах — це <u>єдина точка входу</u>: користувач запускає ігри, програми, музику, відео 
-       або веб-сервіси з одного інтерфейсу.
-       <br>&nbsp;HTML-лаунчер — це програма або інтерфейс, 
-       який використовує веб-технології (HTML, CSS та JavaScript) для створення оболонки 
-       запуску інших програм, зазвичай на мобільних пристроях.</div>
-    <div class="media-block__body">...</div>
+    
+    <div class="media-block__title">&nbsp;&nbsp;&nbsp;У сучасному динамічному світі, де ІТ-технології поступово проникають у всі сфери нашого життя, ми більше не задовольняємося розрізненими точками доступу до тих чи інших ресурсів в <b>Internet</b>. 
+      <br><div style="text-align: center;">&nbsp;Саме тут &laquo;на сцену виходить&raquo;&nbsp;<u><b><i>Омніканальність</i></b></u></div>
+       У HTML-лаунчерах омніканальність — це <u>єдина точка входу</u>: користувач запускає ігри, програми, музику, відео або різні веб-сервіси <u><b><i>з одного інтерфейсу</i></b></u>.
+       <br>&nbsp;HTML-лаунчер — це програма або інтерфейс, який використовує веб-технології 
+       (HTML, CSS та JavaScript) <br>для створення оболонки запуску  інших програм або сайтів, 
+       <br>зазвичай на мобільних пристроях.(смартфони, планшети, нетбуки, мобільні інтернет-пристрої (MID),
+       <br>електронні книги та ін.)</div>
+   
 </div>
-    
-
-</div>
-
-       </div>
-       
-    </div>
-    
-    
+   
 </div><!-- Кінець сторінки "Інформація" -->
 
 <script>
@@ -1210,8 +1286,6 @@ style.innerHTML = `
     }
 `;
 document.head.appendChild(style);
-
-
 // =================================================================
 // 2. ФУНКЦІЯ ПЕРЕКЛЮЧЕННЯ СТОРІНОК (showPage)
 // =================================================================
@@ -1229,8 +1303,6 @@ function showPage(pageId) {
         setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
     }
 }
-
-
 // =================================================================
 // 3. ФУНКЦІЯ КРАСИВОГО КОПІЮВАННЯ В БУФЕР
 // =================================================================
@@ -1249,14 +1321,13 @@ function copyToClipboard(buttonElement, text) {
         }, 2000);
     }).catch(err => alert("Ошибка копирования: " + err));
 }
-
-
 // =================================================================
 // 4. ГОЛОВНИЙ БЛОК ІНІЦІАЛІЗАЦІЇ (Запуск після завантаження сторінки)
 // =================================================================
+
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- НАЛАШТУВАННЯ ПОШУКУ ПО ТАБЛИЦІ---
+// --- НАЛАШТУВАННЯ ПОШУКУ ПО ТАБЛИЦІ---
     const searchInput = document.getElementById('search-table');
     const table = document.getElementById('myTable');
 
@@ -1276,7 +1347,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error("❌ ПОМИЛКА: Не знайдено поле пошуку чи таблиця!");
     }
 
-    // ---НАЛАШТУВАННЯ КНОПОК КОПІЮВАННЯ ---
+// ---НАЛАШТУВАННЯ КНОПОК КОПІЮВАННЯ ---
     const copyButtons = document.querySelectorAll('.copy-btn');
     copyButtons.forEach(btn => {
         btn.addEventListener('click', function() {
@@ -1331,9 +1402,7 @@ function addBook(title, url) {
     `;
 
 }
-
 addBook("Linux", "https://");
-
 
 </script>
 
