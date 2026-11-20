@@ -1,0 +1,3029 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'></text></svg>">
+<link rel="apple-touch-icon" href="">
+
+<meta name="theme-color" content="#1e1e2e">
+    
+<title>𝓞𝓚 - 🇩🇪 вивчаємо німецьку</title>
+
+
+ 
+<style>
+/*-- 1. Вставляємо наш УНІВЕРСАЛЬНИЙ CSS --*/
+
+/* =========================================
+   1. БАЗОВІ НАЛАШТУВАННЯ
+   ========================================= */
+* { box-sizing: border-box; }
+* { box-sizing: border-box; }
+
+img, video, canvas {
+  max-width: 100%;
+  height: auto;
+}
+body {
+  margin: 0;
+  padding: 16px;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: linear-gradient(135deg, #f3e5f5, #e1bee7);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  color: #222;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* =========================================
+   2. КОНТЕЙНЕРИ
+   ========================================= */
+.menu {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+/* =========================================
+   3. СІТКА (GRID)
+   ========================================= */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+  .grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); padding: 0.5rem; }
+}
+@media (max-width: 600px) {
+  .grid { grid-template-columns: 1fr; gap: 0.8rem; padding: 0.5rem; }
+  body { padding: 0.5rem; }
+}
+
+/* =========================================
+   4. КНОПКИ-ПЛИТКИ
+   ========================================= */
+.launcher, .item {
+  min-height: 80px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.85);
+  border: 2px solid #9f73f2;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.launcher:hover, .item:hover {
+  background: #ffffff;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  border-color: #6a1b9a;
+}
+
+.launcher:active, .item:active {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.icon, .emoji,.my-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  width: 28px;       /* Задаємо фіксовану ширину для картинок*/
+  height: 28px;      /* та висоту, щоб вони не ламали картку */
+  margin-bottom: 5px;
+  object-fit: contain; /* Щоб зображення не спотворювалося при зміні розмірів */
+}
+.launcher h3, .item h3, .name {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #333;
+}
+
+.info {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 0.3rem;
+}
+/* Стилі для кнопки "Повернутись до меню" */
+.my-button {
+  display: inline-block !important; /*Щоб кнопка поводилася як блок і можна було ставити розміри*/
+  padding: 12px 24px !important; /* Внутрішні відступи: зверху/знизу 12px, ліворуч/праворуч 24px */
+  font-size: 12px !important;  /* Розмір шрифту*/
+  font-weight: bold !important; /* Жирний шрифт */
+  color: white !important;  /* Колір тексту */
+  background-color:#e1bee7; !important; /* Фіолетовий фон */
+  border: none !important; /* Забираємо стандартну рамку*/
+  border-radius: 15px !important; /* Закруглені кути */
+  cursor: pointer !important;  /* Курсор у вигляді руки при наведенні*/
+  text-align: center !important;  /* Вирівнювання тексту по центру */
+  text-decoration: none !important; /* Забираємо підкреслення, якщо це посилання*/
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important; /* Легка тінь */
+}
+
+/* Ефект при наведенні курсору на кнопку */
+.my-button:hover {
+  background-color: #8e44ad; !important;/* Темніший фіолетовий */
+  transform: translateY(-2px); !important;/* Кнопка трохи "спливає" */
+}
+
+/* Ефект при натисканні на кнопку */
+.my-button:active {
+  transform: translateY(0); /* Кнопка повертається на місце */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Тінь стає меншою*/
+}
+
+/* Якщо ви хочете, щоб кнопка займала всю ширину */
+.my-button.full-width {
+  width: 100%;
+}
+
+
+/* =========================================
+   5.СЕКЦІЇ ТА ЗАГОЛОВКИ
+   ========================================= */
+.section { margin-bottom: 1.5rem; }
+.section-title {
+  font-size: 1.1rem;
+  color: #4a148c;
+  margin-bottom: 0.8rem;
+  font-weight: 700;
+  border-bottom: 2px solid #e1bee7;
+  padding-bottom: 0.3rem;
+  display: inline-block;
+}
+
+.center-title {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #4a148c;
+  margin: 1rem 0;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+/* Контейнер заголовка */
+.logo-container {
+    text-align: center;      /* Вирівнює картинку по центру рядка */
+    margin-top: 20px;        /* Відступ зверху */
+    margin-bottom: 25px;     /* Відступ знизу */
+}
+
+/* Сама картинка-заголовок */
+.header-logo {
+    /* 1. РЕГУЛЮВАННЯ РОЗМІРУ (крути ці цифри, щоб підібрати ідеальний розмір) */
+    width: 100%;             /* Дозволяє картинці стискатися на смартфонах*/
+    max-width: 400px;        /* Максимальна ширина картинки на великому моніторі (міняй під себе!) */
+    height: auto;            /* Щоб пропорції зображення не спотворювалися при зміні ширини*/
+
+    /* 2. Робимо картинку адаптивною */
+    display: inline-block;
+    object-fit: contain;
+
+    /*Красива тінь (за бажанням, як у твого старого тексту) */
+    filter: drop-shadow(3px 2px 3px rgba(0,0,0,0.15));
+}
+/* Контейнер заголовка - тепер він зафіксований при прокручуванні*/
+.logo-container {
+    text-align: center;      /* Вирівнює картинку по центру рядка */
+    margin: 0;               /* Забираємо зовнішні відступи, щоб він щільно притиснувся до верху*/
+    padding-top: 0px;       /* Переносимо відступ усередину */
+    padding-bottom: 0px;    /* Переносимо відступ усередину */
+
+    /* --- МАГІЯ ЗАКРІПЛЕННЯ --- */
+    position: sticky;        /* Говоримо елементу "прилипати" */
+    top: 0;                  /* Прилипати до верхнього краю екрана */
+   /* z-index: 999;            /* Піднімаємо заголовок "вище" карток, щоб вони йшли під нього */
+
+    /* --- ЗАХИСТ ВІД ПРОСВІЧУВАННЯ --- */
+    background-color: var(--bg); /* Задаємо тлі той самий колір, що й у всієї сторінки */
+}
+
+/* =========================================
+   6. ТАБЛИЦІ
+   ========================================= */
+/* Поле пошуку */
+#search-table {
+  width: 100%;
+  max-width: 600px;
+  padding: 12px;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  transition: border-color 0.3s;
+  display: block; /* Важливо для центрування, якщо потрібно */
+  margin: 0 auto 20px; /* Центруємо поле пошуку */
+}
+#search-table:focus {
+  outline: none;
+  border-color: #9f73f2;
+  box-shadow: 0 0 0 3px rgba(159, 115, 242, 0.2);
+}
+
+/* Контейнер таблиці */
+.table-container {
+  width: 100%;
+  overflow-x: auto; /* ЦЕ ОБОВ'ЯЗКО ПОВИННО БУТИ ТАК */
+  margin-bottom: 30px;
+  /* Додайте це, щоб скроллбар був красивим (опціонально) */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Сама таблиця */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  font-size: 0.95rem;
+  /* Спробуйте auto, якщо fixed ламає верстку */
+  table-layout: auto;
+}
+
+/* Заголовки */
+thead th {
+  background: #9f73f2;
+  color: white;
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* Осередки */
+td, th {
+  padding: 10px 12px;
+  border-bottom: 1px solid #eee;
+  vertical-align: middle;
+}
+
+/* Зебра */
+tr:nth-child(even) { background: #f8f4ff; }
+tr.hide-row { display: none; }
+
+/* Код усередині */
+pre {
+  margin: 0;
+  font-family: monospace;
+  background: #f0f0f0;
+  padding: 4px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+/* Кнопка */
+.copy-btn {
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 6px;
+  background: #8678ed;
+  color: #f7fbcb;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.1s;
+  min-width: 125px;
+  white-space: nowrap;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+.copy-btn:hover { background: #6a1b9a; }
+.copy-btn:active { transform: scale(0.98); }
+
+/* Анімація */
+tr.search-found { animation: highlight 0.5s; }
+
+/* Додаємо ключову анімацію, якщо вона була відсутня */
+@keyframes highlight {
+  0% { background-color: #fff; }
+  50% { background-color: #e0f7fa; }
+  100% { background-color: transparent; }
+}
+/* Контейнер для хрестика, щоб він стояв у кутку */
+.close-icon {
+    position: absolute; /* Магія позиціонування */
+    top: 10px;          /* Відступ зверху */
+    right: 15px;         /* Відступ праворуч */
+    cursor: pointer;
+    z-index: 100;       /* Завжди поверх всього контенту у віконці */
+
+    /* Робимо область кліку більше, щоб пальцем було легко влучити! */
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Сама картинка хрестика всередині контейнера */
+.close-icon img {
+    width: 22px;  /* Розмір самого хрестика*/
+    height: 22px;
+    opacity: 0.6; /* Зробимо його трохи приглушеним, сірим */
+    transition: opacity 0.2s ease; /* Плавний ефект при наведенні/натисканні */
+}
+
+/* При наведенні (на ПК) або натисканні (на телефоні) хрестик стане яскравішим */
+.close-icon img:hover {
+    opacity: 1;
+}
+
+/* =========================================
+   7. ПОШУК І ПАНЕЛІ
+   ========================================= */
+#search, .search-box, .search {
+  width: 100%;
+  max-width: 600px;
+  padding: 12px 16px;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  transition: border-color 0.2s;
+  margin-bottom: 1rem;
+}
+#search:focus, .search-box:focus, .search:focus {
+  outline: none;
+  border-color: #9f73f2;
+  box-shadow: 0 0 0 3px rgba(159, 115, 242, 0.2);
+}
+
+.floating-panel {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+}
+.floating-panel .btn {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  border: 1px solid #ddd;
+  font-size: 0.9rem;
+  text-align: center;
+}
+.floating-panel .btn a {
+  text-decoration: none;
+  color: #4a148c;
+  font-weight: 600;
+}
+
+/* =========================================
+   8. ПІДКАЗКИ
+   ========================================= */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+/* =========================================
+   9. СКРИВАННЯ СТОРІНОК
+   ========================================= */
+/* Приховуємо всі сторінки за замовчуванням */
+.page-section {
+  display: none !important;
+  visibility: hidden !important;
+  position: absolute !important;
+  top: -9999px !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Показуємо ТІЛЬКИ активну */
+.page-section.active {
+  display: block !important;
+  visibility: visible !important;
+  position: relative !important;
+  top: auto !important;
+  width: auto !important;
+  height: auto !important;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* Темне тло, яке перекриває сторінку при появі повідомлення */
+.alert-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Напівпрозорий чорний колір */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Вище, ніж зафіксований заголовок! */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease; /* Плавна поява */
+}
+
+/* Клас, який буде додаватися скриптом для показу вікнаа */
+.alert-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Найбіліша коробочка з текстом */
+.alert-box {
+    background-color: white;
+    padding: 25px;
+    border-radius: 15px;
+    max-width: 320px;
+    width: 85%;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    font-family: sans-serif;
+}
+
+.alert-box h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.alert-box p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* Кнопка закриття */
+#close-alert-btn {
+    background-color: #26befd;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+#close-alert-btn:hover {
+    background-color: #1aa0db;
+}
+/* === Тільки Моя бібліотека PDF === */
+
+#pdf-library #library {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 20px;/* відстань між "книжками" */
+}
+
+
+/* окрема "книжка" */
+
+#pdf-library .pdf-book {
+    width: 300px;
+}
+
+
+#pdf-library .pdf-book a {
+    display: block;
+
+    padding: 12px 16px;
+
+    background: rgba(255,255,255,0.55);
+    border-radius: 12px;
+
+    text-decoration: none;
+    color: #2f0d73;
+    font-weight: bold;
+
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+
+#pdf-library .pdf-book a:hover {
+    transform: translateY(-3px);
+}
+ 
+ /* Контейнер подсказки (теперь это ваш div вокруг картинки) */
+/* Контейнер подсказки */
+.custom-tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    /* Отключаем стандартное выделение текста при долгом тапе на мобильных */
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Сама подсказка */
+.custom-tooltip::after {
+    content: attr(data-title);
+    position: absolute;
+    left:-160%;
+    bottom: 20%;
+    transform: translateX(-50%) translateY(-10px);
+    
+    /* Оформление */
+    background-color: rgba(149,42,198, 0.95); /* Чуть прозрачный фон для легкости */
+    color: #ffffff;
+    font-size: 14px;
+    padding: 10px 14px; /* Чуть увеличили отступы для удобства чтения с телефона */
+    border-radius: 8px;
+    
+    /* Умный перенос текста */
+    white-space: normal; /* Разрешаем перенос строк */
+    width: max-content;  /* Подстраивается под длину текста... */
+    max-width: 280px;    /* ...но не шире 280px */
+    text-align: center;  /* Центрируем текст внутри подсказки */
+    
+    /* Эффекты */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
+    z-index: 9999;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Мягкая тень для объема */
+}
+
+/* Появление при наведении (для ПК) */
+.custom-tooltip:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-5px);
+}
+
+/* 📱 АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ ЭКРАНОВ (ширина менее 768px) */
+@media (max-width: 600px) {
+    .custom-tooltip::after {
+        font-size: 13px;    /* Чуть уменьшаем шрифт для компактности */
+        max-width: 600px   /* Ограничиваем ширину, чтобы точно влезло на любой экран */
+        bottom: auto;       /* Сбрасываем позиционирование сверху... */
+        top: -15%;          /* ...и показываем подсказку ПОД картинкой */
+        transform: translateX(-50%) translateY(10px); /* Меняем направление анимации */
+        body { padding: 12px; }
+    .sidebar { display: none; }       /* скрываем второстепенное */
+        nav { flex-direction: column; }   /* меню вертикально */
+    
+   }
+    /* На мобильных подсказка будет мягко выплывать снизу вверх при тапе */
+    .custom-tooltip:hover::after {
+        transform: translateX(-50%) translateY(0);
+    }
+}
+    
+</style>
+</head>
+
+<body>
+<!--ГОЛОВНЕ МЕНЮ (Мабуть завжди) -->
+<div class="menu">
+
+    <!-- Залишаємо тільки ОДИН правильний заголовок з ID для скрипту -->
+    <h1 class="logo-container">
+    
+        <!-- Усередині тільки зображення Base64. Жодних посилань навколо неї! -->
+ <div style="text-align: center;">
+    <div class="custom-tooltip" data-title="Ця сторінка - покликана допомогти у вивченні німецької">
+        <div 
+            id="logo-trigger" 
+            class="header-logo"
+            style="width: 200% !important;
+                   height: auto !important;
+                   position: relative !important;
+                   left: 400% !important;
+                   top: 0px !important;"
+        >
+            🇩🇪 <!-- Эмодзи здесь -->
+        </div>
+    </div>
+</div>
+    </h1>
+
+             <div class="grid">
+
+             <!-- ПОЧАТОК МЕНЮ 
+            Перехід до розділу "deutsch-info" -           ('services-page') 
+            Перехід до розділу "картки для пам'яті" -           ('host-page') 
+            Перехід до розділу "Видосики"                - ('AI_Chats-page')       
+           
+           
+            
+            Перехід до розділу "Послуги" -                    ('State-page')
+            Перехід до розділу "Пошта" -                      ('emails-page')
+            Перехід до розділу "Робота з текстом онлайн" -    ('Office-page')
+            Перехід до розділу "Документи" -                  ('docx-page')
+            Перехід до розділу "Інше" -                       ('Other-page')
+            
+             -->
+                
+                </a>
+ 
+<!-- Кнопка: Перехід до розділу "Вчити німецьку (Deutsch.info)" -->
+        <a href="#" onclick="showPage('services-page')" class="launcher tooltip">
+         
+         <h3>📚&nbsp;&nbsp;Вчити німецьку </h3>
+         <span class="info">на сайті <b><i><u>Deutsch.info</b></i></u></span>
+         <span class="tooltip-text"></span>
+        </a> 
+<!-- Кнопка: Перехід до розділу "картки для пам'яті" -->
+        <a href="#" onclick="showPage('host-page')" class="launcher tooltip">
+         
+         <h3>🗂️&nbsp;&nbsp;картки для пам'яті</h3>
+         <span class="info">З сайту найбільшої онлайн-школи німецької мови у Європі</span>
+         <span class="tooltip-text"></span>
+        </a>
+<!-- Кнопка: Перехід до сайту "Deutsch mit Stift" -->
+        <a href="https://www.youtube.com/@DeutschmitStift" class="launcher tooltip">
+        
+         <h3>🎞️&nbsp;&nbsp;Німецька з ручкою</h3>
+         <span class="info">"Говорящие картинки" з Ютуба</span>
+         <span class="tooltip-text"></span>
+        </a>                 
+<!-- Кнопка: Перехід на сайт "Мій клас-->
+        <a href="https://www.miyklas.com.ua/p/nimecka-mova"target="_blank"class="launcher tooltip">
+         <h3>📚&nbsp;&nbsp;Німецька мова</h3>
+         <span class="info">Мій клас</span>
+         <span class="tooltip-text"></span>
+        </a>      
+
+
+ 
+  
+
+        </div><!-- ЗАКІНЧЕННЯ МЕНЮ -->
+
+
+         <!-- 3. ОБЛАСТЬ КОНТЕНТУ (ПРИХОВАНІ СТОРІНКИ) -->
+        <div class="content">
+
+        <!-- Таблиця "Реєстрації в інтернет"-->
+<!--Секція таблиці (спочатку прихована класом .page-section без .active) -->
+
+<section id="page-tables" class="page-section"class="launcher tooltip">
+
+<!-- === початок хрестика === -->
+       <span onclick="showPage('main-menu')" style="float: right; cursor: pointer; font-size: 30px; font-weight: bold; color: #777; margin: 10px 15px 0 0;">&times;</span>
+<!-- === кінець хрестика === -->
+
+    <!-- 1. Заголовок (закритий правильно) -->
+    <h2 style="text-align: center; color: #4a148c;"></h2>
+   <h2 class="section-title">📇&nbsp;&nbsp;Реєстрації в інтернет</h2>
+   <div>
+
+   </div><br>
+   
+  
+   
+</section><!-- === Кінець таблиці "Реєстрації в інтернет" === -->
+
+
+        <!-- Таблиця "Команді для Thunar"-->
+<!--Секція таблиці (спочатку прихована класом .page-section без .active) -->
+
+<section id="page-Thunar" class="page-section"class="launcher tooltip">
+
+<!-- === початок хрестика === -->
+       <span onclick="showPage('main-menu')" style="float: right; cursor: pointer; font-size: 30px; font-weight: bold; color: #777; margin: 10px 15px 0 0;">&times;</span>
+<!-- === кінець хрестика === -->
+
+    <!-- 1. Заголовок (закритий правильно) -->
+    <h2 style="text-align: center; color: #4a148c;"></h2>
+   <h2 class="section-title">#️⃣&nbsp;&nbsp;Команді для Thunar</h2>
+
+    <!-- 2. Поле пошуку -->
+    <input type="text" id="search-table" placeholder="Пошук за таблицею...">
+
+    <!-- 3. Контейнер таблиці -->
+    <div class="table-container">
+        <!--Тут має бути таблиця-->
+
+
+       <table id="myTable">
+           <thead>
+               <tr>
+                   <th><b><u>Категорія</th>
+                   <th><b>Підкатегорія</th>
+                   <th><b>Опис</th>
+                   <th><b>Команда</th>
+                   <th></th>
+               </tr>
+           </thead>
+       <tbody>
+
+            <tr>  <!-- рядок 1 -->
+               <!-- Категорія  -->
+               <td>🗒&nbsp;&nbsp;Файли</td>
+               <!-- Підкатегорія  -->
+               <td>Права</td>
+               <!-- Опис  -->
+               <td>Зробити файл виконуваним</td>
+               <!-- Текст для кнопки - "Команда"-->
+               <td><pre>chmod +x "%f"</pre></td>
+               <!-- Кнопка "Команда" -->
+               <td><button class="copy-btn" data-command='chmod +x "%f"'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 1 -->
+               <!-- Категорія  -->
+               <td>🗒&nbsp;&nbsp;Файли</td>
+               <!-- Підкатегорія  -->
+               <td>Перейменування</td>
+               <!-- Опис  -->
+               <td>Пробіли → підкреслення</td>
+               <!-- Текст для кнопки - "Команда"-->
+               <td><pre>mv "%f" "$(echo "%f" | tr ' ' '_')"</pre></td>
+               <!-- Кнопка "Команда" -->
+               <td><button class="copy-btn" data-command='mv "%f" "$(echo "%f" | tr ' ' '_')"'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 1 -->
+               <!-- Категорія  -->
+               <td>🗒&nbsp;&nbsp;Файли</td>
+               <!-- Підкатегорія  -->
+               <td>Симлінки</td>
+               <!-- Опис  -->
+               <td>Створити сімлінк</td>
+               <!-- Текст для кнопки - "Команда"-->
+               <td><pre>ln -s "%f" "%n.link"</pre></td>
+               <!-- Кнопка "Команда" -->
+               <td><button class="copy-btn" data-command='ln -s "%f" "%n.link"'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 1 -->
+               <!-- Категорія  -->
+               <td>🗒&nbsp;&nbsp;Файли</td>
+               <!-- Підкатегорія  -->
+               <td>Архіви</td>
+               <!-- Опис  -->
+               <td>Створити ZIP</td>
+               <!-- Текст для кнопки - "Команда"-->
+               <td><pre>zip -r "%n.zip" "%f"</pre></td>
+               <!-- Кнопка "Команда" -->
+               <td><button class="copy-btn" data-command='zip -r "%n.zip" "%f"'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 1 -->
+               <!-- Категорія  -->
+               <td>🗒&nbsp;&nbsp;Файли</td>
+               <!-- Підкатегорія  -->
+               <td>Архіви</td>
+               <!-- Опис  -->
+               <td>Розпакувати тут</td>
+               <!-- Текст для кнопки - "Команда"-->
+               <td><pre>file-roller --extract-here "%f"</pre></td>
+               <!-- Кнопка "Команда" -->
+               <td><button class="copy-btn" data-command='file-roller --extract-here "%f"'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 1 -->
+               <!-- Категорія  -->
+               <td>🗒&nbsp;&nbsp;Файли</td>
+               <!-- Підкатегорія  -->
+               <td>Зображення</td>
+               <!-- Опис  -->
+               <td>Конвертувати у PNG</td>
+               <!-- Текст для кнопки - "Команда"-->
+               <td><pre>convert "%f" "%n.png"</pre></td>
+               <!-- Кнопка "Команда" -->
+               <td><button class="copy-btn" data-command='convert "%f" "%n.png"'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 1 -->
+               <!-- Категорія  -->
+               <td>🗒&nbsp;&nbsp;Файли</td>
+               <!-- Підкатегорія  -->
+               <td>Зображення</td>
+               <!-- Опис  -->
+               <td>Конвертувати у JPG</td>
+               <!-- Текст для кнопки - "Команда"-->
+               <td><pre>convert "%f" "%n.jpg"</pre></td>
+               <!-- Кнопка "Команда" -->
+               <td><button class="copy-btn" data-command='convert "%f" "%n.jpg"'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 1 -->
+               <!-- Категорія  -->
+               <td>🗒&nbsp;&nbsp;Файли</td>
+               <!-- Підкатегорія  -->
+               <td>Приховування</td>
+               <!-- Опис  -->
+               <td>Зробити файл прихованим</td>
+                <!-- Текст для кнопки - "Команда"-->
+               <td><pre>mv "%f" ".%n"</pre></td>
+               <!-- Кнопка "Команда" -->
+               <td><button class="copy-btn" data-command='mv "%f" ".%n"'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 1 -->
+               <!-- Категорія  -->
+               <td>📂&nbsp;&nbsp;Папки</td>
+               <!-- Підкатегорія  -->
+               <td>Термінал</td>
+               <!-- Опис  -->
+               <td>Відкрити термінал у цій папці</td>
+                <!-- Текст для кнопки - "Команда"-->
+               <td><pre>xfce4-terminal --working-directory=%d</pre></td>
+               <!-- Кнопка "Команда" -->
+               <td><button class="copy-btn" data-command='xfce4-terminal --working-directory=%d'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 1 -->
+               <!-- Категорія  -->
+               <td>📂&nbsp;&nbsp;Папки</td>
+               <!-- Підкатегорія  -->
+               <td>Термінал</td>
+               <!-- Опис  -->
+               <td>Відкрити термінал у батьківській папці</td>
+               <!-- Текст для кнопки - "Команда"-->
+               <td><pre>xfce4-terminal --working-directory="$(dirname "%f")"</pre></td>
+               <!-- Кнопка "Команда" -->
+               <td><button class="copy-btn" data-command='xfce4-terminal --working-directory="$(dirname "%f")"'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 1 -->
+               <!-- Категорія  -->
+               <td>📂&nbsp;&nbsp;Папки</td>
+               <!-- Підкатегорія  -->
+               <td>Root</td>
+               <!-- Опис  -->
+               <td>Відкрити цю папку як root</td>
+               <!-- Текст для кнопки - "Команда"-->
+               <td><pre>pkexec thunar "%d"</pre></td>
+               <!-- Кнопка "Команда" -->
+               <td><button class="copy-btn" data-command='pkexec thunar "%d"'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 1 -->
+               <!-- Категорія  -->
+               <td>📂&nbsp;&nbsp;Папки</td>
+               <!-- Підкатегорія  -->
+               <td>Root</td>
+               <!-- Опис  -->
+               <td>Запустити root-Thunar</td>
+               <!-- Текст для кнопки - "Команда"-->
+               <td><pre>pkexec thunar</pre></td>
+               <!-- Кнопка "Команда" -->
+               <td><button class="copy-btn" data-command='pkexec thunar'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 1 -->
+               <!-- Категорія  -->
+               <td>📂&nbsp;&nbsp;Папки</td>
+               <!-- Підкатегорія  -->
+               <td>Пошук</td>
+               <!-- Опис  -->
+               <td>Catfish у цій папці</td>
+               <!-- Текст для кнопки - "Команда"-->
+               <td><pre>catfish --path="%d"</pre></td>
+               <!-- Кнопка "Команда" -->
+               <td><button class="copy-btn" data-command='catfish --path="%d"'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 1 -->
+               <!-- Категорія  -->
+               <td>📂&nbsp;&nbsp;Папки</td>
+               <!-- Підкатегорія  -->
+               <td>Інформація</td>
+               <!-- Опис  -->
+               <td>Розмір папки</td>
+               <!-- Текст для кнопки - "Команда"-->
+               <td><pre>du -chs "%N" | zenity --text-info --title="Размер"</pre></td>
+               <!-- Кнопка "Команда" -->
+               <td><button class="copy-btn" data-command='du -chs "%N" | zenity --text-info --title="Размер"'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 1 -->
+               <!-- Категорія  -->
+               <td>➿&nbsp;&nbsp;Шляхи</td>
+               <!-- Підкатегорія  -->
+               <td>Копіювання</td>
+               <!-- Опис  -->
+               <td>Копіювати повний шлях</td>
+               <!-- Текст для кнопки - "Команда"-->
+               <td><pre>echo -n "%f" | xclip -selection clipboard</pre></td>
+               <!-- Кнопка "Команда" -->
+               <td><button class="copy-btn" data-command='echo -n "%f" | xclip -selection clipboard'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 1 -->
+               <!-- Категорія  -->
+               <td>⚙️&nbsp;&nbsp;Системні</td>
+               <!-- Підкатегорія  -->
+               <td>Файлові менеджери</td>
+               <!-- Опис  -->
+               <td>Відкрити Midnight Commander</td>
+               <!-- Текст для кнопки - "Команда"-->
+               <td><pre>xfce4-terminal -e "mc %d"</pre></td>
+               <!-- Кнопка "Команда" -->
+               <td><button class="copy-btn" data-command='xfce4-terminal -e "mc %d"'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 1 -->
+               <!-- Категорія  -->
+               <td>⚙️&nbsp;&nbsp;Системні</td>
+               <!-- Підкатегорія  -->
+               <td>Диски</td>
+               <!-- Опис  -->
+               <td>Інформація про диски</td>
+               <!-- Текст для кнопки - "Команда"-->
+               <td><pre>lsblk && sudo lsblk -f</pre></td>
+               <!-- Кнопка "Команда" -->
+               <td><button class="copy-btn" data-command='lsblk && sudo lsblk -f'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 1 -->
+               <!-- Категорія  -->
+               <td>⚖️&nbsp;&nbsp;Разное</td>
+               <!-- Підкатегорія  -->
+               <td>Інформація</td>
+               <!-- Опис  -->
+               <td>Лінк на вищу папку</td>
+               <!-- Текст для кнопки - Команда-->
+               <td><pre>ln -s "%f" "%n.link"</pre></td>
+               <!-- Кнопка "Команда" -->
+               <td><button class="copy-btn" data-command='ln -s "%f" "%n.link"'>Копіювати</button></td>
+            </tr>
+
+            </tbody>
+        </table>
+   </button>
+
+   </div><br>
+   
+  </b>
+</section><!-- === Кінець таблиці "Команді для Thunar" === -->
+
+
+        <!-- Таблиця "Команді для терминала Linux"-->
+<!--Секція таблиці (спочатку прихована класом .page-section без .active) -->
+
+<section id="page-terminal" class="page-section"class="launcher tooltip">
+
+<!-- === початок хрестика === -->
+       <span onclick="showPage('main-menu')"
+       style="float: right; cursor: pointer; font-size: 30px; font-weight: bold; color: #777; margin: 10px 15px 0 0;">&times;</span>
+<!-- === кінець хрестика === -->
+
+    <!-- 1. Заголовок (закритий правильно) -->
+    <h2 style="text-align: center; color: #4a148c;"></h2>
+   <h2 class="section-title">🧊&nbsp;&nbsp;Команди для терміналу Linux</h2>
+
+    <!-- 2. Поле пошуку -->
+    <input type="text" id="search-table" placeholder="Пошук за таблицею...">
+
+    <!-- 3. Контейнер таблиці -->
+    <div class="table-container">
+        <!--Тут має бути таблиця-->
+
+
+       <table id="myTable">
+           <thead>
+               <tr>
+                   <th><b>Опис</th>
+                   <th><b>Команда</th>
+                   <th></th>
+               </tr>
+           </thead>
+       <tbody>
+
+            <tr>  <!-- рядок 1 -->
+               <!-- Опис  -->
+               <td>Показати поточну папку</td>
+               <!-- Команда-->
+               <td><pre>pwd</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='pwd'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 2 -->
+               <!-- Опис  -->
+               <td>Список файлів докладно</td>
+               <!-- Команда-->
+               <td><pre>ls -la</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='ls -la'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 3 -->
+               <!-- Опис  -->
+               <td>На рівень вгору</td>
+               <!-- Команда-->
+               <td><pre>cd ..</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='cd ..'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 4 -->
+               <!-- Опис  -->
+               <td>Зробити файл виконуваним</td>
+               <!-- Команда-->
+               <td><pre>chmod +x file</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='chmod +x file'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 5 -->
+               <!-- Опис  -->
+               <td>Копіювати файл</td>
+               <!-- Команда-->
+               <td><pre>cp file1 file2</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='cp file1 file2'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 6 -->
+               <!-- Опис  -->
+               <td>Перемістити або перейменувати</td>
+               <!-- Команда-->
+               <td><pre>mv file1 file2</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='mv file1 file2'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 7 -->
+               <!-- Опис  -->
+               <td>Видалити файл</td>
+               <!-- Команда-->
+               <td><pre>rm file</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='rm file'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 8 -->
+               <!-- Опис  -->
+               <td>Створити папку</td>
+               <!-- Команда-->
+               <td><pre>mkdir dir</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='mkdir dir'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 9 -->
+               <!-- Опис  -->
+               <td>Створити файл</td>
+               <!-- Команда-->
+               <td><pre>touch file</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='touch file'>Копіювати</button></td>
+             </tr>
+             <tr>  <!-- рядок 10 -->
+               <!-- Опис  -->
+               <td>Створити порожній файл</td>
+               <!-- Команда-->
+               <td><pre>touch + шлях та ім'я файлу</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='touch'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 11 -->
+               <!-- Опис  -->
+               <td>Пошук тексту</td>
+               <!-- Команда-->
+               <td><pre>grep 'text' file</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='grep 'text' file'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 12 -->
+               <!-- Опис  -->
+               <td>Пошук файлу</td>
+               <!-- Команда-->
+               <td><pre>find . -name file</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='find . -name file'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 13 -->
+               <!-- Опис  -->
+               <td>Оновити пакети</td>
+               <!-- Команда-->
+               <td><pre>sudo apt update</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='sudo apt update'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 14 -->
+               <!-- Опис  -->
+               <td>Оновити систему</td>
+               <!-- Команда-->
+               <td><pre>sudo apt upgrade</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='sudo apt upgrade'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 15 -->
+               <!-- Опис  -->
+               <td>Встановити пакет</td>
+               <!-- Команда-->
+               <td><pre>sudo apt install pkg</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='sudo apt install pkg'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 16 -->
+               <!-- Опис  -->
+               <td>Монітор процесів</td>
+               <!-- Команда-->
+               <td><pre>top</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='top'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 17 -->
+               <!-- Опис  -->
+               <td>Список процесів</td>
+               <!-- Команда-->
+               <td><pre>ps aux</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='ps aux'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 18 -->
+               <!-- Опис  -->
+               <td>Завершити процес</td>
+               <!-- Команда-->
+               <td><pre>kill PID</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='kill PID'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 19 -->
+               <!-- Опис  -->
+               <td>Місце на диску</td>
+               <!-- Команда-->
+               <td><pre>df -h</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='df -h'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 20 -->
+               <!-- Опис  -->
+               <td>Пам'ять</td>
+               <!-- Команда-->
+               <td><pre>free -h</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='free -h'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 21 -->
+               <!-- Опис  -->
+               <td>Список дисків</td>
+               <!-- Команда-->
+               <td><pre>lsblk</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='lsblk'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 22 -->
+               <!-- Опис  -->
+               <td>Змонтувати</td>
+               <!-- Команда-->
+               <td><pre>udisksctl mount -b /dev/sdX1</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='udisksctl mount -b /dev/sdX1'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 23 -->
+               <!-- Опис  -->
+               <td>Розмонтувати</td>
+               <!-- Команда-->
+               <td><pre>udisksctl unmount -b /dev/sdX1</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='udisksctl unmount -b /dev/sdX1'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 24 -->
+               <!-- Опис  -->
+               <td>Мережа</td>
+               <!-- Команда-->
+               <td><pre>ip a</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='ip a'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 25 -->
+               <!-- Опис  -->
+               <td>Перевірка мережі</td>
+               <!-- Команда-->
+               <td><pre>ping google.com</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='ping google.com'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 26 -->
+               <!-- Опис  -->
+               <td>Створити архів</td>
+               <!-- Команда-->
+               <td><pre>tar -czf file.tar.gz dir</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='tar -czf file.tar.gz dir'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 27 -->
+               <!-- Опис  -->
+               <td>Розпакувати архів</td>
+               <!-- Команда-->
+               <td><pre>tar -xzf file.tar.gz</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='tar -xzf file.tar.gz'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 28 -->
+               <!-- Опис  -->
+               <td>Папки видаляються без кошика</td>
+               <!-- Команда-->
+               <td><pre>rm -r</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='rm -r'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 29 -->
+               <!-- Опис  -->
+               <td>Файли видаляються без кошика</td>
+               <!-- Команда-->
+               <td><pre>rm</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='rm'>Копіювати</button></td>
+            </tr>
+
+            </tbody>
+        </table>
+   </button>
+
+   </div><br>
+   
+   
+</section><!-- === Кінець таблиці "Команді Linux" === -->
+
+
+        <!-- Таблиця "Команді для html"-->
+<!--Секція таблиці (спочатку прихована класом .page-section без .active) -->
+
+<section id="page-html" class="page-section"class="launcher tooltip">
+
+<!-- === початок хрестика === -->
+       <span onclick="showPage('main-menu')" style="float: right; cursor: pointer; font-size: 30px; font-weight: bold; color: #777; margin: 10px 15px 0 0;">&times;</span>
+<!-- === кінець хрестика === -->
+
+    <!-- 1. Заголовок (закритий правильно) -->
+    <h2 style="text-align: center; color: #4a148c;"></h2>
+   <h2 class="section-title">📲&nbsp;&nbsp;Команді для Thunar</h2>
+
+    <!-- 2. Поле пошуку -->
+    <input type="text" id="search-table" placeholder="Пошук за таблицею...">
+
+    <!-- 3. Контейнер таблиці -->
+    <div class="table-container">
+        <!--Тут має бути таблиця-->
+
+
+       <table id="myTable">
+           <thead>
+               <tr>
+                   <th><b><u>Категорія</th>
+                   <th><b>Підкатегорія</th>
+                   <th><b>Опис</th>
+                   <th><b>Команда</th>
+                   <th></th>
+               </tr>
+           </thead>
+       <tbody>
+
+            <tr>  <!-- рядок 1 -->
+               <!-- Категорія  -->
+               <td>🗒&nbsp;&nbsp;Файли</td>
+               <!-- Підкатегорія  -->
+               <td>Права</td>
+               <!-- Опис  -->
+                <td>Зробити файл виконуваним</td>
+               <!-- Команда-->
+               <td><pre>chmod +x "%f"</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='chmod +x "%f"'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 2 -->
+               <!-- Категорія  -->
+               <td>🗒&nbsp;&nbsp;Файли</td>
+               <!-- Підкатегорія  -->
+               <td>Перейменування</td>
+               <!-- Опис  -->
+                <td>Пробіли → підкреслення</td>
+               <!-- Команда-->
+               <td><pre>mv "%f" "$(echo "%f" | tr ' ' '_')"</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='mv "%f" "$(echo "%f" | tr ' ' '_')"'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 3 -->
+               <!-- Категорія  -->
+               <td>🗒&nbsp;&nbsp;Файли</td>
+               <!-- Підкатегорія  -->
+               <td>Симлінки</td>
+               <!-- Опис  -->
+                <td>Створити сімлінк</td>
+               <!-- Команда-->
+               <td><pre>ln -s "%f" "%n.link"</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='ln -s "%f" "%n.link"'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 4 -->
+               <!-- Категорія  -->
+               <td>🗒&nbsp;&nbsp;Файли</td>
+               <!-- Підкатегорія  -->
+               <td>Архіви</td>
+               <!-- Опис  -->
+                <td>Створити ZIP</td>
+               <!-- Команда-->
+               <td><pre>zip -r "%n.zip" "%f"</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='zip -r "%n.zip" "%f"'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 5 -->
+               <!-- Категорія  -->
+               <td>🗒&nbsp;&nbsp;Файли</td>
+               <!-- Підкатегорія  -->
+               <td>Архіви</td>
+               <!-- Опис  -->
+                <td>Розпакувати тут</td>
+               <!-- Команда-->
+               <td><pre>file-roller --extract-here "%f"</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='file-roller --extract-here "%f"'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 6 -->
+               <!-- Категорія  -->
+               <td>🗒&nbsp;&nbsp;Файли</td>
+               <!-- Підкатегорія  -->
+               <td>Зображення</td>
+               <!-- Опис  -->
+                <td>Конвертувати у PNG</td>
+               <!-- Команда-->
+               <td><pre>convert "%f" "%n.png"</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='convert "%f" "%n.png"'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 7 -->
+               <!-- Категорія  -->
+               <td>🗒&nbsp;&nbsp;Файли</td>
+               <!-- Підкатегорія  -->
+               <td>Зображення</td>
+               <!-- Опис  -->
+                <td>Конвертувати у JPG</td>
+               <!-- Команда-->
+               <td><pre>convert "%f" "%n.jpg"</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='convert "%f" "%n.jpg"'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 8 -->
+               <!-- Категорія  -->
+               <td>🗒&nbsp;&nbsp;Файли</td>
+               <!-- Підкатегорія  -->
+               <td>Приховування</td>
+               <!-- Опис  -->
+                <td>Зробити файл прихованим</td>
+               <!-- Команда-->
+               <td><pre>mv "%f" ".%n"</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='mv "%f" ".%n"'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 9 -->
+               <!-- Категорія  -->
+               <td>📂&nbsp;&nbsp;Папки</td>
+               <!-- Підкатегорія  -->
+               <td>Термінал</td>
+               <!-- Опис  -->
+                <td>Відкрити термінал у цій папці</td>
+               <!-- Команда-->
+               <td><pre>xfce4-terminal --working-directory=%d</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='xfce4-terminal --working-directory=%d'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 10 -->
+               <!-- Категорія  -->
+               <td>📂&nbsp;&nbsp;Папки</td>
+               <!-- Підкатегорія  -->
+               <td>Термінал</td>
+               <!-- Опис  -->
+                <td>Відкрити термінал у батьківській папці</td>
+               <!-- Команда-->
+               <td><pre>xfce4-terminal --working-directory="$(dirname "%f")"</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='xfce4-terminal --working-directory="$(dirname "%f")"'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 11 -->
+               <!-- Категорія  -->
+               <td>📂&nbsp;&nbsp;Папки</td>
+               <!-- Підкатегорія  -->
+               <td>Root</td>
+               <!-- Опис  -->
+                <td>Відкрити цю папку як root</td>
+               <!-- Команда-->
+               <td><pre>pkexec thunar "%d"</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='pkexec thunar "%d"'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 12 -->
+               <!-- Категорія  -->
+               <td>📂&nbsp;&nbsp;Папки</td>
+               <!-- Підкатегорія  -->
+               <td>Root</td>
+               <!-- Опис  -->
+                <td>Запустити root-Thunar</td>
+               <!-- Команда-->
+               <td><pre>pkexec thunar</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='pkexec thunar'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 13 -->
+               <!-- Категорія  -->
+               <td>📂&nbsp;&nbsp;Папки</td>
+               <!-- Підкатегорія  -->
+               <td>Пошук</td>
+               <!-- Опис  -->
+                <td>Catfish у цій папці</td>
+               <!-- Команда-->
+               <td><pre>catfish --path="%d"</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='catfish --path="%d"'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 14 -->
+               <!-- Категорія  -->
+               <td>📂&nbsp;&nbsp;Папки</td>
+               <!-- Підкатегорія  -->
+               <td>Інформація</td>
+               <!-- Опис  -->
+                <td>Розмір папки</td>
+               <!-- Команда-->
+               <td><pre>du -chs "%N" | zenity --text-info --title="Размер"</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='du -chs "%N" | zenity --text-info --title="Размер"'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 15 -->
+               <!-- Категорія  -->
+               <td>➿&nbsp;&nbsp;Шляхи</td>
+               <!-- Підкатегорія  -->
+               <td>Копіювання</td>
+               <!-- Опис  -->
+                <td>Копіювати повний шлях</td>
+               <!-- Команда-->
+               <td><pre>echo -n "%f" | xclip -selection clipboard</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='echo -n "%f" | xclip -selection clipboard'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 16 -->
+               <!-- Категорія  -->
+               <td>⚙️&nbsp;&nbsp;Системні</td>
+               <!-- Підкатегорія  -->
+               <td>Файлові менеджери</td>
+               <!-- Опис  -->
+                <td>Відкрити Midnight Commander</td>
+               <!-- Команда-->
+               <td><pre>xfce4-terminal -e "mc %d"</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='xfce4-terminal -e "mc %d"'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 17 -->
+               <!-- Категорія  -->
+               <td>⚙️&nbsp;&nbsp;Системні</td>
+               <!-- Подкатегория  -->
+               <td>Диски</td>
+               <!-- Опис  -->
+                <td>Інформація про диски</td>
+               <!-- Команда-->
+               <td><pre>lsblk && sudo lsblk -f</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='lsblk && sudo lsblk -f'>Копіювати</button></td>
+            </tr>
+            <tr>  <!-- рядок 18 -->
+               <!-- Категорія  -->
+               <td>⚖️&nbsp;&nbsp;Разное</td>
+               <!-- Підкатегорія  -->
+               <td>Інформація</td>
+               <!-- Опис  -->
+                <td>Лінк на вищу папку</td>
+               <!-- Команда-->
+               <td><pre>ln -s "%f" "%n.link"</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn" data-command='ln -s "%f" "%n.link"'>Копіювати</button></td>
+            </tr>
+
+            </tbody>
+        </table>
+   </button>
+
+   </div><br>
+   <button
+   class="my-button"
+   style="padding: 1px 30px; font-size: 4px; width: 200px;"
+   onclick="showPage('main-menu')">
+   👈 <b><i>Повернутись до меню</i></b>
+</section><!-- === Кінець таблиці "Команді html" === -->
+
+
+<!-- Таблиця "Набір команд zenity"-->
+
+<section id="page-zenity" class="page-section">
+
+<!-- === початок хрестика === -->
+       <span onclick="showPage('main-menu')" style="float: right; cursor: pointer; font-size: 30px; font-weight: bold; color: #777; margin: 10px 15px 0 0;">&times;</span>
+<!-- === кінець хрестика === -->
+
+    <!-- 1. Заголовок (закритий правильно) -->
+    <h2 style="text-align: center; color: #4a148c;"></h2>
+   <h2 class="section-title">⚙️&nbsp;&nbsp;Набір команд zenity</h2>
+
+    <!-- 2. Поле пошуку -->
+    <input type="text" id="search-table" placeholder="Пошук за таблицею...">
+
+    <!-- 3. Контейнер таблиці -->
+    <div class="table-container">
+        <!--Тут має бути таблиця-->
+
+       <table id="myTable">
+           <thead>
+               <tr>
+                   <th><b>Розділ</th>
+                   <th><b>Що виконує команда</th>
+                   <th><b>Синтаксис Bash</th>
+                   <th></th>
+               </tr>
+           </thead>
+       <tbody>
+
+
+               <td><b><i><u>🛠️ Частина 1. Набір команд zenity</b></i></u></td>
+           </tr>
+           <tr><!-- 🛠️ Частина 1. Набір команд zenity  -->
+               <td>1. Попередження (Кнопка "ОК")</td>
+               <!-- Що виконує команда  -->
+               <td>Використовується, щоб показати помилку або важливе повідомлення.</td>
+               <!-- Синтаксис Bash-->
+               <td><pre>zenity --warning --title="Увага!" --text="Батарея майже розряджена!"</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn"
+               data-command='zenity --warning --title="Увага!" --text="Батарея майже розряджена!'>Копіювати</button></td>
+           </tr>
+           <tr><!-- 🛠️ Частина 1. Набір команд zenity  -->
+               <td>2. Вибір дати (Календар)</td>
+               <!-- Що виконує команда  -->
+               <td>Виводить інтерактивний календар. Коли користувач вибирає дату, вона повертається у форматі ДД.ММ.РРРР</td>
+               <!-- Синтаксис Bash-->
+               <td><pre>zenity --calendar --title="Виберіть день" --text="Коли дедлайн?"</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn"
+               data-command='zenity --calendar --title="Виберіть день" --text="Коли дедлайн?"'>Копіювати</button></td>
+           </tr>
+           <tr><!-- 🛠️ Частина 1. Набір команд zenity  -->
+               <td>3. Вибір файлу на комп'ютері</td>
+               <!-- Що виконує команда  -->
+               <td>Відкриває стандартне системне вікно провідника. Повертає повний шлях до вибраного файлу.</td>
+               <!-- Синтаксис Bash-->
+               <td><pre>zenity --file-selection --title="Виберіть шлях до файлу"</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn"
+               data-command='zenity --file-selection --title="Виберіть шлях до файлу"'>Копіювати</button></td>
+           </tr>
+           <tr><!-- 🛠️ Частина 1. Набір команд zenity  -->
+               <td>4. Шкала прогресу (Індикатор завантаження)</td>
+               <!-- Що виконує команда  -->
+               <td>Показує повзунок, що заповнюється від 0 до 100%. Дуже круто для довгих скриптів.</td>
+               <!-- Синтаксис Bash-->
+               <td><pre>( echo " 10 " ; sleep 1 echo " 50 " ; sleep 1 echo " 100 " ; sleep 1 ) | zenity --progress --title="Копіювання" --text="Будь ласка, зачекайте..." --percentage=0 --width=600 --height=100</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn"
+               data-command='( echo " 10 " ; sleep 1 echo " 50 " ; sleep 1 echo " 100 " ; sleep 1 ) | zenity --progress --title="Копіювання" --text="Будь ласка, зачекайте..." --percentage=0 --width=600 --height=100'>Копіювати</button></td>
+           </tr>
+           <tr><!-- Смуга пропуску  -->
+               <td></td>
+           </tr>
+           <tr>
+               <td><b><i><u>📦 Частина 2. Мінімальний набір роботи зі Змінними</b></i></u></td>
+           </tr>
+           <tr><!-- 📦 Частина 2. Мінімальний набір роботи зі Змінними. -->
+               <td>У Bash змінні - це дуже просто, але потрібно суворо дотримуватися двох правил:</td>
+               <!-- Що виконує команда  -->
+               <td>1. Записати текст або число вручну:</td>
+               <!-- Синтаксис Bash-->
+               <td><pre>NAME="Олексій" AGE=30</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn"
+               data-command='NAME="Олексій" AGE=30'>Копіювати</button></td>
+           </tr>
+           <tr><!-- 📦 Частина 2. Мінімальний набір роботи зі Змінними. -->
+               <td>При записі НЕМАЄ знака долара і НЕМАЄ пробілів навколо =</td>
+               <!-- Що виконує команда  -->
+               <td>Записати в змінну результат роботи zenity:</td>
+               <!-- Синтаксис Bash-->
+               <td><pre># Обов'язково використовуємо $( ... ) навколо команди MY_FILE=$(zenity --file-selection)</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn"
+               data-command='# Обов"язково використовуємо $( ... ) навколо команди MY_FILE=$(zenity --file-selection)'>Копіювати</button></td>
+           </tr>
+           <tr><!-- 📦 Частина 2. Мінімальний набір роботи зі Змінними. -->
+               <td>Під час читання (виклику) знак долара ОБОВ'ЯЗКОВИЙ.</td>
+               <!-- Що виконує команда  -->
+               <td>Використовувати змінну у тексті:</td>
+               <!-- Синтаксис Bash-->
+               <td><pre># Переменная внутри двойных кавычек автоматически превратится в свое значение zenity --info --text="Привет, $NAME! Тебе уже $AGE лет."</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn"
+               data-command='# Переменная внутри двойных кавычек автоматически превратится в свое значение zenity --info --text="Привет, $NAME! Тебе уже $AGE лет."'>Копіювати</button></td>
+           </tr>
+           <tr>
+               <td><b><i><u>🧠 Частина 3. Мінімальний набір умов if (Логіка) </b></i></u></td>
+           </tr>
+           <tr><!-- 🧠 Частина 3. Мінімальний набір умов if (Логіка)  -->
+               <td>Умови дозволяють скрипту ухвалювати рішення.(Зверніть увагу: усередині квадратних дужок [...] пробіли після першої дужки і перед останньою обов'язкові!).</td>
+               <!-- Що виконує команда  -->
+               <td>Перевірка кнопки Так / Ні (через zenity --question)</td>
+               <!-- Синтаксис Bash-->
+               <td><pre>if zenity --question --text="Ви впевнені?"; then
+zenity --info --text="Відмінно, продовжуємо!"
+else
+zenity --info --text="Процес скасовано."
+exit 0 # Вихід зі скрипту
+fi</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn"
+               data-command='if zenity --question --text="Ви впевнені?"; then
+zenity --info --text="Відмінно, продовжуємо!"
+else
+zenity --info --text="Процес скасовано."
+exit 0 # Вихід зі скрипту
+fi'>Копіювати</button></td>
+           </tr>
+           <tr><!-- 🧠 Частина 3. Мінімальний набір умов if (Логіка)  -->
+               <td>Дуже важлива перевірка. Прапор -z перевіряє, чи не порожня змінна. Якщо користувач натиснув "Скасувати" у вікні введення, змінна буде порожньою, і скрипт може зламатися. Захищаємо його:</td>
+               <!-- Що виконує команда  -->
+               <td>Перевірка: «А чи ввів користувач хоч щось?»</td>
+               <!-- Синтаксис Bash-->
+               <td><pre>USER_INPUT=$(zenity --entry --text="Введіть кодове слово:")
+
+if [-z "$USER_INPUT"]; then
+zenity --error --text="Ви нічого не ввели або натиснули Скасувати!"
+exit 1
+fi</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn"
+               data-command='USER_INPUT=$(zenity --entry --text="Введіть кодове слово:")
+
+if [-z "$USER_INPUT"]; then
+zenity --error --text="Ви нічого не ввели або натиснули Скасувати!"
+exit 1
+fi'>Копіювати</button></td>
+           </tr>
+           <tr><!-- 🧠 Частина 3. Мінімальний набір умов if (Логіка)  -->
+               <td>Якщо потрібно порівняти числа (наприклад, введений час), використовуються спеціальні скорочення:
+-gt (Greater Than) - більше >
+-lt (Less Than) - менше <
+-eq (EQual) - дорівнює =</td>
+               <!-- Що виконує команда  -->
+               <td>Порівняння чисел</td>
+               <!-- Синтаксис Bash-->
+               <td><pre>CHAIRS=5
+
+if [ "$CHAIRS" -gt 3 ]; then
+    zenity --info --text="Стільців більше, ніж три!"
+fi</pre></td>
+               <!-- Текст, який копіюється -->
+               <td><button class="copy-btn"
+               data-command='CHAIRS=5
+
+if [ "$CHAIRS" -gt 3 ]; then
+    zenity --info --text="Стільців більше, ніж три!"
+fi'>Копіювати</button></td>
+           </tr>
+
+           </tbody>
+       </table>
+   </div><br>
+   
+  
+</section><!-- === Кінець сторінки "Набір команд zenity" === -->
+
+
+           <!-- === Сторінка "Документи" === -->
+
+    <div id="docx-page" class="page-section">
+    
+<!-- === початок хрестика === -->
+       <span onclick="showPage('main-menu')" style="float: right; cursor: pointer; font-size: 30px; font-weight: bold; color: #777; margin: 10px 15px 0 0;">&times;</span>
+<!-- === кінець хрестика === -->
+
+    <h2 class="section-title">📚✔️&nbsp;&nbsp;Документи</h2>
+    <div class="grid">
+
+<!-- Посилання (на незапаролені .pdf-файли на GitHub) -->
+
+        <a href="https://github.com/alexey-kolmakov/vok-df1/blob/main/%D0%B7%D1%86%D0%9B%D0%A4%D0%A2_55.pdf"class="launcher"target="_blank">
+       🇺🇦&nbsp;&nbsp;Паспорт КАН (внутрішній)
+       </a>
+       <a href="https://github.com/alexey-kolmakov/vok-df1/blob/main/%D0%92%D1%89%D1%8C%D0%B7%D1%84%D1%8B_%D0%9B%D0%9D%D0%A8%D0%93.pdf"class="launcher"target="_blank">
+       🇺🇦&nbsp;&nbsp;Паспорт КІЮ (внутрішній)
+       </a>
+       <a href="https://github.com/alexey-kolmakov/vok-df1/blob/main/%D1%80%D1%83%D1%88%D0%BA_%D0%BB%D0%B3%D1%82%D0%B2%D1%83_14%D1%8E10.pdf"class="launcher"target="_blank">
+       👨‍👩‍👧&nbsp;&nbsp;Свідоцтво про шлюб
+       </a>
+       <a href="https://github.com/alexey-kolmakov/vok-df1/blob/main/%D0%97%D1%83%D1%82%D1%8B%D1%88%D1%89%D1%82_%D0%9B%D0%A4%D0%A2%D0%93.pdf"class="launcher"target="_blank">
+       📋&nbsp;&nbsp;Пенсійне КАН
+       </a>
+        <a href="https://github.com/alexey-kolmakov/vok-df1/blob/main/%D1%8B%D1%88%D1%89%D1%82%D1%83%D0%A8%D0%92_%D0%9B%D0%A8%D0%9D.pdf"class="launcher"target="_blank">
+       📋&nbsp;&nbsp;Пенсійне КІЮ
+        </a>
+       <a href="https://github.com/alexey-kolmakov/vok-df1/blob/main/%D0%A8%D1%82%D0%B5%D1%83%D0%BA_%D0%9B%D0%A4%D0%A2%D0%93.pdf"class="launcher"target="_blank">
+       🇪🇺&nbsp;&nbsp;Загранпаспорт КАН
+       </a>
+       <a href="https://github.com/alexey-kolmakov/vok-df1/blob/main/%D0%A8%D1%82%D0%B5%D1%83%D0%BA_%D0%9B%D0%A8%D0%9D%D0%93.pdf"class="launcher"target="_blank">
+       🇪🇺&nbsp;&nbsp;Загранпаспорт КІЮ
+       </a>
+       <a href="https://github.com/alexey-kolmakov/vok-df1/blob/main/%D1%84%D1%82%D0%BA%D0%BD%D1%82%D0%B0%D0%B5%D1%88%D1%82%D0%92%D1%83%D0%B3%D0%B5%D1%8B%D1%81%D1%80%D0%B4%D1%84%D1%82%D0%B2.pdf"
+       class="launcher"target="_blank">
+       🇩🇪&nbsp;&nbsp;Дата заїзду в Німеччину
+       </a>
+       <a href="https://github.com/alexey-kolmakov/vok-df1/blob/main/%D0%9B%D0%A4%D0%A2_%D0%BA%D1%84%D0%B5%D1%88%D1%89_%D0%92%D1%89%D1%81%D0%B3%D0%A2.pdf"class="launcher"target="_blank">
+       🇩🇪&nbsp;&nbsp;Вид на проживання КАН
+       </a>
+       <a href="https://github.com/alexey-kolmakov/vok-df1/blob/main/%D0%9B%D0%A8%D0%9D%D0%B3_%D0%9A%D1%83%D1%81%D0%B3%D1%8C_%D0%A2%D1%83%D1%86.pdf"class="launcher"target="_blank">
+       🇩🇪&nbsp;&nbsp;Вид на проживання КІЮ
+       </a>
+       <a href="https://github.com/alexey-kolmakov/vok-df1/blob/main/%D1%88%D1%8B%D0%B5%D0%BA%D1%83%D1%88%D0%BA%D0%B3%D1%82%D0%BF_040825.pdf"class="launcher"target="_blank">
+       🇩🇪&nbsp;&nbsp;Прописка у Німеччині
+       </a>
+       <a href="https://www.gesetze-im-internet.de/ukraineaufenthfgv/BJNR14E0A0023.html"class="launcher"target="_blank">
+       🇩🇪&nbsp;&nbsp;UkraineAufenthFGV
+       </a>
+       <a href="https://github.com/alexey-kolmakov/vok-df1/blob/main/%D0%90%D1%8A%D1%80%D0%BA_%D1%83%D1%88%D1%82_111.pdf"class="launcher"target="_blank">
+       🚗&nbsp;&nbsp;Посвідчення водія 
+       </a>
+        <a href="#" onclick="showPage('Insurance-page')" class="launcher tooltip">
+       ☂️&nbsp;&nbsp;Страхування</a>
+        <a href="#" onclick="showPage('Rights-page')" class="launcher tooltip">
+       🏡&nbsp;&nbsp;Права власності в Україні
+       </a>
+        
+   </div><br>
+   
+   
+    </div><!-- === Кінець сторінки "Документи" === -->
+    
+          <!-- === Сторінка "Страхування" === -->
+
+    <div id="Insurance-page" class="page-section">
+    
+<!-- === початок хрестика === -->
+       <span onclick="showPage('main-menu')" style="float: right; cursor: pointer; font-size: 30px; font-weight: bold; color: #777; margin: 10px 15px 0 0;">&times;</span>
+<!-- === кінець хрестика === -->
+
+    <h2 class="section-title">💝&nbsp;&nbsp;Страхування</h2>
+    <div class="grid">
+
+<!-- Посилання (на незапаролені .pdf-файли на GitHub) -->
+
+       <a href="https://github.com/alexey-kolmakov/vok-df1/blob/main/%D0%A2%D0%A4%D0%9B_%D0%AB%D0%B5%D0%BA%D1%84%D0%BB%D1%80.pdf"class="launcher"target="_blank">
+       💊&nbsp;&nbsp;Мед.страховка КАН
+       </a>
+       <a href="https://github.com/alexey-kolmakov/vok-df1/blob/main/%D0%90%D1%83%D1%84%D0%BA_%D0%9B%D0%A8%D0%93.pdf"class="launcher"target="_blank">
+       🫙&nbsp;&nbsp;Мед.страховка КІЮ
+       </a>
+        
+       <a href="https://github.com/alexey-kolmakov/vok-df1/blob/main/%D0%9C%D1%83%D0%BA%D1%8B%D1%88%D1%81%D1%80%D1%83%D0%BA%D0%B3%D1%82%D0%BF_%D0%92%D0%A3.pdf"class="launcher"target="_blank">
+       🛞&nbsp;&nbsp;Страхування Логан
+       </a>
+       <a href="https://github.com/alexey-kolmakov/vok-df1/blob/main/%D1%8B%D0%B7%D1%84%D0%BA%D1%8B%D0%B3%D0%BA%D1%84%D1%82%D1%81%D1%83.pdf"class="launcher"target="_blank">
+       🐦‍🔥&nbsp;&nbsp;Страхування спаркаси
+       </a>
+       <a href="---"class="launcher"target="_blank">
+       🧮&nbsp;&nbsp;
+       </a>
+   </div><br>
+   
+   
+    </div><!-- === Кінець сторінки "Страхування" === -->
+    
+    
+         <!-- === Сторінка "Права власності в Україні" === -->
+
+    <div id="Rights-page" class="page-section">
+    
+<!-- === початок хрестика === -->
+       <span onclick="showPage('main-menu')" style="float: right; cursor: pointer; font-size: 30px; font-weight: bold; color: #777; margin: 10px 15px 0 0;">&times;</span>
+<!-- === кінець хрестика === -->
+
+    <h2 class="section-title">📚&nbsp;&nbsp;Права власності</h2>
+    <div class="grid">
+
+<!-- Посилання (на незапаролені .pdf-файли на GitHub) -->
+
+
+       <a href="https://github.com/alexey-kolmakov/vok-df1/blob/main/%D0%B7%D0%BA%D1%89%D0%B7%D0%B5%D1%80%D1%83_%D1%80%D1%84%D0%B3%D1%8B.pdf"class="launcher"target="_blank">
+       🏡&nbsp;&nbsp;Право власності <br>(житловий будинок)
+       </a>
+       <a href="https://github.com/alexey-kolmakov/vok-df1/blob/main/%D0%9A%D1%83%D1%80%D1%89%D0%B3%D1%8B%D1%84%D0%BF%D0%BA%D1%83%D1%83%D1%8C%D1%83%D1%82%D0%B5.pdf"class="launcher"target="_blank">
+       📜&nbsp;&nbsp;Договір <br>купівлі-продажу будинку
+       </a>
+       <a href="https://github.com/alexey-kolmakov/vok-df1/blob/main/%D1%89%D1%86%D1%82%D1%83%D0%BA%D0%B4%D1%84%D1%82%D0%B2_%D0%B7%D0%B4%D1%89%D0%B5.pdf"class="launcher"target="_blank">
+        🌄&nbsp;&nbsp;Право власності <br>(земельна ділянка)
+       </a>
+       <a href="https://github.com/alexey-kolmakov/vok-df1/blob/main/%D0%94%D1%84%D1%82%D0%B2%D1%84%D0%BF%D0%BA%D1%83%D1%83%D1%8C.pdf"class="launcher"target="_blank">
+       📜&nbsp;&nbsp;Договір купівлі-продажу <br>земельної ділянки
+       </a>
+       <a href="https://github.com/alexey-kolmakov/vok-df1/blob/main/%D0%A4%D0%B7%D1%84%D0%BA%D0%B5%D0%AB%D0%B5%D1%84%D0%B2%D1%88%D0%B3%D0%BC_%D1%8B%D0%B5%D0%BD%D0%B4%D1%83.pdf"class="launcher"target="_blank">
+       📜&nbsp;&nbsp;Договір купівлі-продажу <br>квартири (Стадионний)
+       </a>
+       <a href="https://github.com/alexey-kolmakov/vok-df1/blob/main/%D0%AC%D1%84%D0%BA%D0%BD%D1%8B%D1%8B%D0%B5%D1%84%D0%B5%D1%83%D1%8C.pdf"class="launcher"target="_blank">
+       📝&nbsp;&nbsp;Марішина заява<br> (про будинок)
+       </a>
+       <a href="https://github.com/alexey-kolmakov/vok-df1/blob/main/%D0%A6%D0%9A_%D0%95%D1%83%D0%BA.0419.pdf"class="launcher"target="_blank">
+        📑&nbsp;&nbsp;Витяг з реєстру громади про адресу проживання   *
+       </a>
+      
+              
+       
+       
+   
+        
+       
+       <!--  <a href="https://ua.files.fm/u/6kp2uqd6wm"class="launcher"target="_blank">
+       💶&nbsp;&nbsp;Виписки Sparkasse за 2025 год
+       </a>
+        <a href="https://ua.files.fm/u/umyrxeqsew"class="launcher"target="_blank">
+       💶&nbsp;&nbsp;Виписки Sparkasse за 2026 год
+       </a>
+       <a href="https://ua.files.fm/f/5rjyc48zng"class="launcher"target="_blank">
+       🩼&nbsp;&nbsp;Социаламт
+       </a>
+       <a href="https://ua.files.fm/f/jng6bjunwq"class="launcher"target="_blank">
+       🚙&nbsp;&nbsp;Авто (документи, страховки, інше)
+       </a>
+       <a href="https://ua.files.fm/f/q4cteccw3c"class="launcher"target="_blank">
+       📟&nbsp;&nbsp;Свидетельство о регистрации в Германии
+       </a>
+       <a href="https://ua.files.fm/f/3kyudrjxsk"class="launcher"target="_blank">
+       📖&nbsp;&nbsp;10. Експлуатаційні витрати
+       </a>
+       
+       <a href="https://ua.files.fm/f/qhckm29aq5?fk=ae93e986"class="launcher"target="_blank">
+       🔤&nbsp;&nbsp;Облік
+       </a>
+        <a href="https://github.com/alexey-kolmakov/vok-df1/blob/main/%D0%B7%D0%BA%D1%89%D0%B7%D0%B5%D1%80%D1%83_%D1%80%D1%84%D0%B3%D1%8B.pdf"class="launcher"target="_blank">
+       🏡&nbsp;&nbsp;Права власності в Україні
+       </a>
+        
+       <a href="https://github.com/alexey-kolmakov/vok-df1/blob/main/%D0%B7%D0%BA%D1%89%D0%B7%D0%B5%D1%80%D1%83_%D1%80%D1%84%D0%B3%D1%8B.pdf"class="launcher"target="_blank">
+       🏡&nbsp;&nbsp;Право власності <br>(житловий будинок)   *
+       </a>
+       <a href="https://github.com/alexey-kolmakov/vok-df1/blob/main/%D0%9A%D1%83%D1%80%D1%89%D0%B3%D1%8B%D1%84%D0%BF%D0%BA%D1%83%D1%83%D1%8C%D1%83%D1%82%D0%B5.pdf"class="launcher"target="_blank">
+       📜&nbsp;&nbsp;Договір <br>купівлі-продажу будинку  *
+       </a>
+       <a href="https://github.com/alexey-kolmakov/vok-df1/blob/main/%D1%89%D1%86%D1%82%D1%83%D0%BA%D0%B4%D1%84%D1%82%D0%B2_%D0%B7%D0%B4%D1%89%D0%B5.pdf"class="launcher"target="_blank">
+        🌄&nbsp;&nbsp;Право власності <br>(земельна ділянка)  *
+       </a>
+       <a href="https://github.com/alexey-kolmakov/vok-df1/blob/main/%D0%94%D1%84%D1%82%D0%B2%D1%84%D0%BF%D0%BA%D1%83%D1%83%D1%8C.pdf"class="launcher"target="_blank">
+       📜&nbsp;&nbsp;Договір купівлі-продажу <br>земельної ділянки *
+       </a>
+       <a href="https://github.com/alexey-kolmakov/vok-df1/blob/main/%D0%A4%D0%B7%D1%84%D0%BA%D0%B5%D0%AB%D0%B5%D1%84%D0%B2%D1%88%D0%B3%D0%BC_%D1%8B%D0%B5%D0%BD%D0%B4%D1%83.pdf"class="launcher"target="_blank">
+       📜&nbsp;&nbsp;Договір купівлі-продажу <br>квартири (Стадионний)  *
+       </a>
+       <a href="https://github.com/alexey-kolmakov/vok-df1/blob/main/%D0%AC%D1%84%D0%BA%D0%BD%D1%8B%D1%8B%D0%B5%D1%84%D0%B5%D1%83%D1%8C.pdf"class="launcher"target="_blank">
+       📝&nbsp;&nbsp;Марішина заява<br> (про будинок)  *
+       </a>
+       <a href="https://github.com/alexey-kolmakov/vok-df1/blob/main/%D0%A6%D0%9A_%D0%95%D1%83%D0%BA.0419.pdf"class="launcher"target="_blank">
+        📑&nbsp;&nbsp;Витяг з реєстру громади про адресу проживання   *
+       </a> -->
+       
+
+   </div><br>
+   
+   
+    </div><!-- === Кінець сторінки "Права власності в Україні" === -->
+
+
+               <!-- === Сторінка "deutsch-info:" === -->
+
+    <div id="services-page" class="page-section">
+
+<!-- === початок хрестика === -->
+       <span onclick="showPage('main-menu')" style="float: right; cursor: pointer; font-size: 30px; font-weight: bold; color: #777; margin: 10px 15px 0 0;">&times;</span>
+<!-- === кінець хрестика === -->
+
+    <h2 class="section-title"><b>deutsch</b>-info:</h2><br>
+    <span class="info">Бажаєш зберігати результати тестів - реєструйся</span>
+    
+    <div class="grid">
+
+<!-- Кнопка: "Deutsch.info" Реєстрація-->
+        <a href="https://deutsch.info/login"target="_blank" class="launcher tooltip">
+         <h3>📚&nbsp;&nbsp;Вчити німецьку </h3>
+         <span class="info">Зареєструйся, натиснувши тут</span>
+         <span class="tooltip-text"></span>
+        </a>
+<!-- Кнопка: "Deutsch.info" Список всіх матеріалів на сайті -->        
+<a href="https://deutsch.info/mediathek?MediaItem%5Bstatus_id%5D=&MediaItem%5Btitle%5D=&MediaItem%5Bcategory_id%5D=&MediaItem%5Btype_id%5D=&MediaItem%5Blevel_id%5D=" target="_blank" class="launcher tooltip">
+         <span class="icon"></span>
+         <h3><b>deutsch</b>-info:</h3>
+         <span class="info">Список всіх матеріалів на сайті</span>
+         </a>        
+<!-- Кнопка: "Deutsch.info" Вступне -->        
+         <a href="https://deutsch.info/courses/intro"target="_blank" class="launcher tooltip">
+                
+                <h3><b>deutsch</b>-info:</h3>
+                <span class="tooltip-text">Вступне</span><br> 
+                <span class="info"></span>
+               
+                </a>
+ <!-- Кнопка 16: Перехід на сайт "Учить немецкий"Deutsche Welle -->               
+          <a href="https://deutsch.info/courses/a1"target="_blank" class="launcher tooltip">
+               
+                <h3><b>deutsch</b>-info:</h3>
+                <span class="tooltip-text">Рівень А-1</span><br>
+                <span class="info"></span>
+                </a>  
+ <!-- Кнопка 16: Перехід на сайт "Учить немецкий"Deutsche Welle -->               
+          <a href="https://deutsch.info/courses/a2"target="_blank" class="launcher tooltip">
+                
+                <h3><b>deutsch</b>-info:</h3>
+                <span class="tooltip-text">Рівень А-2</span><br>
+                <span class="info"></span>
+                </a>   
+<!-- Кнопка 16: Перехід на сайт "Учить немецкий"Deutsche Welle -->                
+          <a href="https://deutsch.info/courses/b1"target="_blank" class="launcher tooltip">
+                
+                <h3><b>deutsch</b>-info:</h3>
+                <span class="tooltip-text">Рівень В-1</span><br> 
+                <span class="info"></span>
+                </a>
+ <!-- Кнопка 16: Перехід на сайт "Учить немецкий"Deutsche Welle -->              
+          <a href="https://deutsch.info/courses/b2"target="_blank" class="launcher tooltip">
+                
+                <h3><b>deutsch</b>-info:</h3>
+                <span class="tooltip-text">Рівень В-2</span><br>
+                <span class="info"></span>
+                </a>
+   </div><br>   
+   
+    </div><!-- === Кінець сторінки "deutsch-info:" === -->
+
+               <!-- === Сторінка "Офісні" === -->
+
+    <div id="Office-page" class="page-section">
+
+<!-- === початок хрестика === -->
+       <span onclick="showPage('main-menu')" style="float: right; cursor: pointer; font-size: 30px; font-weight: bold; color: #777; margin: 10px 15px 0 0;">&times;</span>
+<!-- === кінець хрестика === -->
+
+    <h2 class="section-title">🧑‍💻📑&nbsp;&nbsp;Робота з текстом онлайн</h2>
+    <div class="grid">
+
+ <!-- Кнопка: Перехід в онлайн "Google-перекладач" -->
+        <a class="item tooltip" href="https://translate.google.com/?sl=ru&tl=uk&op=translate"target="_blank">
+         <h3> 🆓&nbsp;&nbsp;Google-перекладач</h3>
+         <span class="info">(kolmakov.info@gmail.com)</span>
+         <span class="tooltip-text"></span>
+        </a>
+ <!-- Кнопка: Перехід на сайт "Slovnyk.ua" -->
+        <a href="https://slovnyk.ua/index.php"target="_blank"class="launcher tooltip">
+         <h3>📘&nbsp;&nbsp;Словник</h3>
+         <span class="info">Портал української мови та культури</span>
+         <span class="tooltip-text"></span>
+        </a>
+<!-- Кнопка: Перехід на сайт "Slovnyk.ua" -->
+        <a href="https://wordassociations.net/ru/%D0%B0%D1%81%D1%81%D0%BE%D1%86%D0%B8%D0%B0%D1%86%D0%B8%D0%B8-%D0%BA-%D1%81%D0%BB%D0%BE%D0%B2%D1%83/%D0%BA%D0%BE%D0%BF%D1%8B%D1%82%D0%BE?button=%D0%9D%D0%B0%D0%B9%D1%82%D0%B8"target="_blank"class="launcher tooltip">
+         <h3>📒&nbsp;&nbsp;Асоціації до слова</h3>
+         <span class="info">Проект «Мережа словесних асоціацій»</span>
+         <span class="tooltip-text"></span>
+        </a>
+<!-- Кнопка: Перехід на сайт "PDF-24" -->
+        <a href="https://tools.pdf24.org/ru/"target="_blank"class="launcher tooltip">
+         <h3>🛍️&nbsp;&nbsp;PDF-24</h3>
+         <span class="info">Інструменти PDF24 &mdash;прямо у браузері</span>
+         <span class="tooltip-text"></span>
+        </a>
+ <!-- Кнопка: Перехід на сайт "PDF-24" -->
+        <a href="https://www.ilovepdf.com/ru "target="_blank"class="launcher tooltip">
+         <h3>🛍️&nbsp;&nbsp;iLovePDF</h3>
+         <span class="info">Інструменти PDF24 &mdash;прямо у браузері</span>
+         <span class="tooltip-text"></span>
+        </a>
+<!-- Кнопка: Перехід на сайт "Google таблиці" -->
+        <a href="https://docs.google.com/spreadsheets/u/0/?pli=1"target="_blank"class="launcher tooltip">
+         <h3>📊&nbsp;&nbsp;Google таблиці</h3>
+         <span class="info">Вхід &mdash; з kolmakov.info@gmail.com</span>
+         <span class="tooltip-text"></span>
+        </a>
+ <!-- Кнопка: Перехід на сайт "Istio" -->
+        <a href="https://istio.com/uk/text/analyz"target="_blank"class="launcher tooltip">
+         <h3>📜&nbsp;&nbsp;Семантичний аналіз</h3>
+         <span class="info">Працювати можна без реєстрації</span>
+         <span class="tooltip-text"></span>
+        </a> 
+ 
+
+
+   </div><br>
+   
+   
+    </div><!-- === Кінець сторінки "Офісні" === -->
+
+
+                   <!-- === Сторінка "Чати зі штучним інтелектом" === -->
+
+    <div id="AI_Chats-page" class="page-section">
+
+<!-- === початок хрестика === -->
+       <span onclick="showPage('main-menu')" style="float: right; cursor: pointer; font-size: 30px; font-weight: bold; color: #777; margin: 10px 15px 0 0;">&times;</span>
+<!-- === кінець хрестика === -->
+    <h2 class="section-title">💬🤖&nbsp;&nbsp;Чати зі штучним інтелектом</h2>
+    <div class="grid">
+    
+  <div class="video-card">
+      <div class="media vertical">
+        <iframe
+          src="https://www.youtube.com/@DeutschmitStift"
+          scrolling="no"
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+          allowfullscreen="true">
+        </iframe>
+      </div>
+      <div class="caption">
+        <strong>Порядок слов в предложении</strong>
+        <p>Коротко про позицию глагола.</p>
+        <span class="tag">А1 → А2</span>
+      </div>
+    </div>
+  
+
+<!-- Кнопка: Перехід на сайт Copilot_Microsoft -->
+     <a href="https://i.ytimg.com/vi/yQbcjUZQ4BU/oar1.jpg?sqp=-oaymwEoCJUDENAFSFqQAgHyq4qpAxcIARUAAIhC2AEB4gEKCBgQAhgGOAFAAQ==&rs=AOn4CLBWD-aljQ8W_PZkE7PmS4zCLVExoQ"class="launcher"target="_blank">
+         <h3>💬&nbsp;&nbsp;Copilot_Microsoft<br></h3>
+         <span class="info">(panlikar)</span>
+     </a>
+<!-- Кнопка: Перехід на сайт ChatGPT -->
+     <a class="item tooltip" href="https://chatgpt.com/c/697f860d-4bb8-8325-8a3e-6dcf1ea539f3"target="_blank">
+         <h3>💭&nbsp;&nbsp;Чат GPT<br></h3>
+         <span class="info">(kolmakov.info@gmail.com)</span>
+     </a>
+<!-- Кнопка: Перехід на сайт Gemini -->
+     <a class="item tooltip" href="https://gemini.google.com/app/888f3140787d75a1"target="_blank">
+         <h3>💠&nbsp;&nbsp;Gemini<br></h3>
+         <span class="info">(kolmakov.info@gmail.com)</span>
+         <span class="tooltip-text"></span>
+     </a>
+<!-- Кнопка: Перехід на сайт Сhatinfo -->
+     <a class="item tooltip" href="https://chatinfo.ru/neiroset-pishet-tekst"target="_blank">
+         <h3>📮&nbsp;&nbsp;Сhatinfo<br></h3>
+         <span class="info">Нейронна мережа пише текст</span>
+         <span class="tooltip-text"></span>
+     </a>
+
+   </div><br>
+</div><!-- === Кінець сторінки "Чати зі штучним інтелектом" === -->
+
+         <!-- === Сторінка "картки для пам'яті" === -->
+
+    <div id="host-page" class="page-section">
+
+<!-- === початок хрестика === -->
+       <span onclick="showPage('main-menu')" style="float: right; cursor: pointer; font-size: 30px; font-weight: bold; color: #777; margin: 10px 15px 0 0;">&times;</span>
+<!-- === кінець хрестика === -->
+
+  <div class="grid">
+  <div class="collection-container">
+
+    <h2 class="section-heading"></h2>
+ <h2 class="section-title">🗂️&nbsp;&nbsp;картки для пам'яті</h2><br>
+  <span class="info">З сайту найбільшої онлайн-школи німецької мови у Європі</span>
+         <span class="tooltip-text"></span>
+    <div class="grid">
+
+<!-- Важные глаголы -->
+    <div class="video-card">
+      <div class="media square">
+        <img
+          src="https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/694811923_1369694555183326_832198212192555735_n.avif?stp=dst-jpg_tt6&cstp=mx1080x1080&ctp=s1080x1080&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=YFRM7yF3VQgQ7kNvwHtMjG7&_nc_oc=AdpzqmwbcK_ZghvxsVzyRXJrO_9xUomIsc_MIjCeZQ3g459BjqhVIHabdlNX2Fd6UT8&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&_nc_gid=C6Q68sGfOYvzwa3U6O2KDQ&_nc_ss=7b2a8&oh=00_AQSTrTqAjornQ63FX-S5fxHos6pMcBROCPCeGZ0NcI0IRA&oe=6B06060F"
+          alt="">
+      </div>
+      <div class="caption">
+        <strong></strong>
+        <p></p>
+        <span class="tag"></span>
+      </div>
+ <!-- 20 простых слов -->
+    <div class="video-card">
+      <div class="media square">
+        <img
+          src="https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/696942651_1369693468516768_6818104347592207672_n.avif?stp=dst-jpg_tt6&cstp=mx1080x1080&ctp=s1080x1080&_nc_cat=108&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=MzhaVdHik6AQ7kNvwFfVuUv&_nc_oc=Adojgbm78jJbtMUqy33X-6cbzSSOs-nD_0u-RR9EQ8KQ9plyKJ0bqJgI6EDkL7v1rtM&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&_nc_gid=8ROtdzd68RGHvzDnnb2gKQ&_nc_ss=7b2a8&oh=00_AQSy-Dw5Iiiozbws8D4t78hsfWgCmgG8CQ8wcoZ_Ey6Zcw&oe=6B060962"
+          alt="">
+      </div>
+      <div class="caption">
+        <strong></strong>
+        <p></p>
+        <span class="tag"></span>
+      </div>
+      
+       <!-- Смешаные предлоги -->
+    <div class="video-card">
+      <div class="media square">
+        <img
+          src="https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/695102366_1369681585184623_4364559965379196127_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1080&ctp=s1080x1080&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=sJNfQUaSgP0Q7kNvwFnleBA&_nc_oc=AdpWPB1zhnrwAiWedE3r04oN3gjigFqmBnN21kiyx5IkGTVjrk17Rcyv3Kdod0WRtps&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&_nc_gid=02doUVR0LHBvtVjXxhdFmQ&_nc_ss=7b2a8&oh=00_AQQv4YExFtaGl2hwGS_6x60NNJ0F-nP5Zuacfq4lPw5RTw&oe=6B062914"
+          alt="">
+      </div>
+      <div class="caption">
+        <strong></strong>
+        <p></p>
+        <span class="tag"></span>
+      </div>
+      
+        <!-- Шпаргалка по времени -->
+    <div class="video-card">
+      <div class="media square">
+        <img
+          src="https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-6/696268438_1369684915184290_2400120993556991749_n.avif?stp=dst-jpg_tt6&cstp=mx1080x1080&ctp=s1080x1080&_nc_cat=103&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=eMGm2oHFJ1IQ7kNvwHeRGqm&_nc_oc=Adq58GOg9GoghAni-nMgvVX46RmYjXURzmqrAy7B9qGT8JI-mx2HPCOyQCnYzxu8INE&_nc_zt=23&_nc_ht=scontent-fra3-2.xx&_nc_gid=IPsyr8qrd6dNUpZuwLhwZg&_nc_ss=7b2a8&oh=00_AQSLNnDHiEff1GZToe3z0xDvjvK9ppk__XFAmHdcNOHHoQ&oe=6B0600F8"
+          alt=""
+        >
+      </div>
+      <div class="caption">
+        <strong></strong>
+        <p></p>
+        <span class="tag"></span>
+      </div>
+       <!-- Домашние дела -->
+    <div class="video-card">
+      <div class="media square">
+        <img
+          src="https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/689274895_1369676965185085_3856844189480031830_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1080&ctp=s1080x1080&_nc_cat=109&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=nsq0-YwDWT0Q7kNvwEh8H0Y&_nc_oc=AdofAnknv1xiK4MvDPgmnp4_N98uUP_962dL4HCf2dr0_iXfDgaP9T7C19WJTo0_1kE&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&_nc_gid=4ht3nmZJfqIogUhXTT4zMw&_nc_ss=7b2a8&oh=00_AQRSgv9Bf3CVeeHcqfo22ctSVbxLs-ufVqkcQsI3F2PGTg&oe=6B0616B7"
+          alt=""
+        >
+      </div>
+      <div class="caption">
+        <strong></strong>
+        <p></p>
+        <span class="tag"></span>
+      </div>
+      
+       <!-- Говорим вежливо -->
+    <div class="video-card">
+      <div class="media square">
+        <img
+          src="https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/696827020_1369669558519159_1643115226269542052_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1080&ctp=s1080x1080&_nc_cat=104&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=ScYCgkfW_8wQ7kNvwG_jXlL&_nc_oc=Ado3sA1vTfZUgKrZSc7Q4AQQEv8cSr9gQ_xqmDa-aqBPJZX2fZDx0SGp-Wx2EmHdEj4&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&_nc_gid=mqfYLFgr8V7NoUVn3Rj5qw&_nc_ss=7b2a8&oh=00_AQSEsihtK-roCncgO_uWCk4KG1oNbme1Ux_zNzIr7zoC8w&oe=6B062789"
+          alt=""
+        >
+      </div>
+      <div class="caption">
+        <strong></strong>
+        <p></p>
+        <span class="tag"></span>
+      </div>
+      
+       <!-- Извинения -->
+    <div class="video-card">
+      <div class="media square">
+        <img
+          src="https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/693350656_1369668381852610_516521003461383738_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1080&ctp=s1080x1080&_nc_cat=108&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=SZiz8AkxyVIQ7kNvwHXKULj&_nc_oc=AdpFRjUBomf3fDWXiv-2cYffwesUNEJdvVS-v9nLYbm-FjzCX25bZVP3x2NKAAZfXgI&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&_nc_gid=2K0Oa0NLChpIrc8HTxtRFw&_nc_ss=7b2a8&oh=00_AQQBVauwAbKwQfonVdA7XlAW92FXh7eKIMaooLA3YzrDGg&oe=6B06060F"
+          alt=""
+        >
+      </div>
+      <div class="caption">
+        <strong></strong>
+        <p></p>
+        <span class="tag"></span>
+      </div>
+      
+       <!-- Меры измерения -->
+    <div class="video-card">
+      <div class="media square">
+        <img
+          src="https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/687017947_1363709855781796_4650733957430422844_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1080&ctp=s1080x1080&_nc_cat=100&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=-BEY_RbH-tcQ7kNvwHZe3ZP&_nc_oc=AdrA_0Vseib7NCl2mcQB5dOdVBASarAScspIUabGfuk0CBqfS2kbTkoCu05JVAgC95M&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&_nc_gid=fR4vI9yBufvL1wWetqLYfw&_nc_ss=7b2a8&oh=00_AQTkiwzEDPj7T5COOQ6eoa_rU268ZvBE54B7fld8i7crPA&oe=6B0603C1"
+          alt=""
+        >
+      </div>
+      <div class="caption">
+        <strong></strong>
+        <p></p>
+        <span class="tag"></span>
+      </div>
+      
+        <!-- Das ist ≠ Es ist! -->
+    <div class="video-card">
+      <div class="media square">
+        <img
+          src="https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/682467586_1357830279703087_6996684765690505243_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1080&ctp=s1080x1080&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=Te3YBXMhrSAQ7kNvwGLZ1x6&_nc_oc=AdoRN7CPDa6IoC0kaJM7r3cAwCfctJF0qE6D77FgEvkcVicWKwqPivF-Dv4MY3ue9xs&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&_nc_gid=DQmhehgawf6VWU0-_ZfhnA&_nc_ss=7b2a8&oh=00_AQS017Kfsad2EKf_Y5nTtcuKrhGaNBTRZoyX5DFtjx43fA&oe=6B06057C"
+          alt=""
+        >
+      </div>
+      <div class="caption">
+        <strong></strong>
+        <p></p>
+        <span class="tag"></span>
+      </div>
+      
+        <!-- Частицы в значении усиления -->
+    <div class="video-card">
+      <div class="media square">
+        <img
+          src="https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/686903403_1363697145783067_5586895831361780566_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1080&ctp=s1080x1080&_nc_cat=102&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=L-J3ttzZEAwQ7kNvwGMwqjD&_nc_oc=Adq0Iyu2eAVSlKJ_tv43erzbQx8-mP9bWlBVqKU1zmA5UiZtaoNaaA-pTm3Ts-VTbBU&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&_nc_gid=boJq5bhQTqzQ74VMfjigAg&_nc_ss=7b2a8&oh=00_AQQoKCD3TFqRQaIQoT1lraqnOspqsYx_XVeJUPts0_kWbg&oe=6B060EC7"
+          alt=""
+        >
+      </div>
+      <div class="caption">
+        <strong></strong>
+        <p></p>
+        <span class="tag"></span>
+      </div>
+      
+        <!-- Спектр эмоций -->
+    <div class="video-card">
+      <div class="media square">
+        <img
+          src="https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/687830942_1363696462449802_1353415403661342133_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1080&ctp=s1080x1080&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=qutLLsUXqDwQ7kNvwFmCEnx&_nc_oc=Adp_AZeBf5q9XFUx4Yhwpv2E6-ZKkN0iKHDfTL0jz0bzmTOP3o59_D8BQtW3_BZkOug&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&_nc_gid=GRA7Y1CFO7lg6tYq5NBrug&_nc_ss=7b2a8&oh=00_AQQrjKbtOh_qlYqyvic8tnl7ZqoymFEtAuMyOhitolO_nQ&oe=6B060FA4"
+          alt=""
+        >
+      </div>
+      <div class="caption">
+        <strong></strong>
+        <p></p>
+        <span class="tag"></span>
+      </div>
+      
+      <!-- пригодятся на кассе в супермаркете -->
+    <div class="video-card">
+      <div class="media square">
+        <img
+          src="https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/686522705_1363695059116609_8156122040052238715_n.jpg?stp=dst-jpg_tt6&cstp=mx916x918&ctp=s916x918&_nc_cat=106&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=DXjtqM3E25sQ7kNvwFYRoKL&_nc_oc=AdpDA2XATzQ5NAJY-4YxqgmsxXOfzAPXsRfr0aDyrmlZen1DErPqIVUyt-lBdnikKrk&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&_nc_gid=WyjmpJnIOL0AbHEH2XO19g&_nc_ss=7b2a8&oh=00_AQTZ7o7dSa0oJx5iuKehHvUN11EIvcnsJs2bmjim--qgRQ&oe=6B063519"
+          alt=""
+        >
+      </div>
+      <div class="caption">
+        <strong></strong>
+        <p></p>
+        <span class="tag"></span>
+      </div>
+      
+      <!-- Возвратные глаголы  -->
+    <div class="video-card">
+      <div class="media square">
+        <img
+          src="https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/687645338_1363691342450314_6743852175864841500_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1080&ctp=s1080x1080&_nc_cat=106&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=kBXaWz10-3wQ7kNvwH9gakm&_nc_oc=Adq5wykpYWDUVAEAApynNg3gp2WSxMRmbYDvAE9ILUIHYvAqdnQPtQ83xHgbY6BVh7o&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&_nc_gid=kCwIZswCGl6JjoRYq3GRlg&_nc_ss=7b2a8&oh=00_AQSTpNMDqc8ZN6AcTE0k8eGvjTQW7fNbQkTdLqiNziAd2w&oe=6B060722"
+          alt=""
+        >
+      </div>
+      <div class="caption">
+        <strong></strong>
+        <p></p>
+        <span class="tag"></span>
+      </div>
+      
+      <!-- Будни начались... -->
+    <div class="video-card">
+      <div class="media square">
+        <img
+          src="https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-6/684120132_1357843683035080_8628016137538906471_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1080&ctp=s1080x1080&_nc_cat=105&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=qAwkCBdcqL4Q7kNvwGHkhLj&_nc_oc=Adrj-_7wEU6DU06ECdXvuFUpUpp1vwk9Db0Fr6Ikl_F4fK8XrAaFySeHzyXwb_vJF4I&_nc_zt=23&_nc_ht=scontent-fra3-2.xx&_nc_gid=b1TpxQ2ALYL6lO64EBfuOw&_nc_ss=7b2a8&oh=00_AQSW7jmNjG4NWUHO-i7Xw6o-WOyi66ebbjVSFBS7n3UiNA&oe=6B063087"
+          alt=""
+        >
+      </div>
+      <div class="caption">
+        <strong></strong>
+        <p></p>
+        <span class="tag"></span>
+      </div>
+      
+      <!-- Выражения со словом “Tag” -->
+    <div class="video-card">
+      <div class="media square">
+        <img
+          src="https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/684213413_1357843103035138_8883877194245751413_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1080&ctp=s1080x1080&_nc_cat=106&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=Lq4dg_naUnQQ7kNvwGwtxlW&_nc_oc=AdqkUwNYkRxXXmGQhfVijo-_2fvz02cZPPEy2LE0e-97iW_voasjAuTMVolCBsEjVMw&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&_nc_gid=MCaq85DZIWhrwoUc8EQ7UQ&_nc_ss=7b2a8&oh=00_AQRfalzm5rVSO5-cbhewHQEJa88gy5HHnRr1eujbTwVzRg&oe=6B06336A"
+          alt=""
+        >
+      </div>
+      <div class="caption">
+        <strong></strong>
+        <p></p>
+        <span class="tag"></span>
+      </div>
+      
+      <!-- Немецкий сленг в интернете -->
+    <div class="video-card">
+      <div class="media square">
+        <img
+          src="https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/684210949_1357842159701899_3534691532666034575_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1080&ctp=s1080x1080&_nc_cat=103&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=wQlArEj8rFYQ7kNvwHTiSjw&_nc_oc=Adq5XvHt-ptz_nBu5X6vBm0-WKDzhgBKo4jPCFkRJ-1kchO9EkbTjfTQJZI64bZLzsU&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&_nc_gid=gdR-gZ-Ilr1jJS0iFtPd9g&_nc_ss=7b2a8&oh=00_AQQfi2Rhiq9uQ2JKjQeSKnjcg6ca95z5AY7dktg17RY9fA&oe=6B063510"
+          alt=""
+        >
+      </div>
+      <div class="caption">
+        <strong></strong>
+        <p></p>
+        <span class="tag"></span>
+      </div>
+      
+      <!-- Глаголы с приставкой ein -->
+    <div class="video-card">
+      <div class="media square">
+        <img
+          src="https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/684068060_1357861896366592_6317288127409089553_n.jpg?stp=dst-jpg_tt6&cstp=mx1638x2048&ctp=s1638x2048&_nc_cat=102&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=an_Q6PZf5RoQ7kNvwEDWD4X&_nc_oc=AdpEgnyZupdhaUReSiRrbI36MfctN0uJsvQWYi-_7UcZCfJviHVpFolQThZk0xrRmIg&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&_nc_gid=RZwh4SmCIV1OV9u9i2RTTw&_nc_ss=7b2a8&oh=00_AQRIrmhZTPNyD7DZ1taoxbsdIGrHozbNJHAK44XWPBlc0w&oe=6B061825"
+          alt=""
+        >
+      </div>
+      <div class="caption">
+        <strong></strong>
+        <p></p>
+        <span class="tag"></span>
+      </div>
+      
+      <!-- Наречия направления -->
+    <div class="video-card">
+      <div class="media square">
+        <img
+          src="https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/681871298_1357833183036130_5057348945492303719_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1080&ctp=s1080x1080&_nc_cat=111&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=QQgOUMZPWKcQ7kNvwGZW1m7&_nc_oc=AdrNzZ2ZZpsYE9W2pIl4Cx3vVJrrJgnTX3wrvZFsUPM1N60_uVHpK9hr5pcvhppXq7Y&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&_nc_gid=E0P7XhlGJdNNN-AF-2wbGw&_nc_ss=7b2a8&oh=00_AQTvzwt0DmaywXYyo3LlW8bgSeEkwFmoFhXSIFsxbpkFIw&oe=6B06381B"
+          alt=""
+        >
+      </div>
+      <div class="caption">
+        <strong></strong>
+        <p></p>
+        <span class="tag"></span>
+      </div>
+      
+      <!-- Заменяем Ja -->
+    <div class="video-card">
+      <div class="media square">
+        <img
+          src="https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/683428421_1357822879703827_1118528474198399174_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1080&ctp=s1080x1080&_nc_cat=101&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=tPK4W8OtDiIQ7kNvwFxkCBC&_nc_oc=AdqLbTks8IE_P7cc4nZFw8jdGOjIxY_Pr4esPqOxmbDqyPZ_13dLtUJGH7z8DfAUTXc&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&_nc_gid=tAzmLE6lDOE9LFI1rddm7Q&_nc_ss=7b2a8&oh=00_AQTrJPek2MOasWh7FQu5g1Z25uudrp9dWHWBXaa-dJRvag&oe=6B0635B8"
+          alt=""
+        >
+      </div>
+      <div class="caption">
+        <strong></strong>
+        <p></p>
+        <span class="tag"></span>
+      </div>
+      
+      <!-- Важные вопросы -->
+    <div class="video-card">
+      <div class="media square">
+        <img
+          src="https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-6/681161176_1357823163037132_7941346977388129079_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1080&ctp=s1080x1080&_nc_cat=106&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=YKR-1RDqJbsQ7kNvwFRdNr1&_nc_oc=Ado5Rv1_TeZfMNRJK51JHZcIWy8VVwMuF7LD-lysB4Y-zjr5PtwEDM_7M76Q7Vna6NU&_nc_zt=23&_nc_ht=scontent-fra3-2.xx&_nc_gid=ARqw62Su8e6MgaE9RFa8bQ&_nc_ss=7b2a8&oh=00_AQR0FSx_tY0wI79iUKtq3izrLOJT09nM_JRI2GaN_9MgvQ&oe=6B061A0D"
+          alt=""
+        >
+      </div>
+      <div class="caption">
+        <strong></strong>
+        <p></p>
+        <span class="tag"></span>
+      </div>
+      
+      <!-- Базовые цвета -->
+    <div class="video-card">
+      <div class="media square">
+        <img
+          src="https://scontent-fra5-1.xx.fbcdn.net/v/t39.30808-6/680634051_1357821356370646_6210477997271194462_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1080&ctp=s1080x1080&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=RwF1PrORXVkQ7kNvwESZXwi&_nc_oc=AdpqlMZsys9JpLjg8pKjTD4m9Hx_sGjcmcb4xeHr8QX5UCfOZaC4E-T5EUBVbKJtxrw&_nc_zt=23&_nc_ht=scontent-fra5-1.xx&_nc_gid=wUTcBhxtutfCPhzXL41Pig&_nc_ss=7b2a8&oh=00_AQQdW6upAU_u-ght3tH35NRbqyfbn5GUcERBBO0-P85AGg&oe=6B060AA1"
+          alt=""
+        >
+      </div>
+      <div class="caption">
+        <strong></strong>
+        <p></p>
+        <span class="tag"></span>
+      </div>
+      
+      <!-- Говорим о цвете -->
+    <div class="video-card">
+      <div class="media square">
+        <img
+          src="https://scontent-fra3-2.xx.fbcdn.net/v/t39.30808-6/679696765_1357821373037311_7704499810892040099_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1080&ctp=s1080x1080&_nc_cat=101&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_ohc=dDIKI8grjlQQ7kNvwHA8K5U&_nc_oc=AdofGpQSm9pDHTkVh62mD73oZQ68-fVNFGvlOnZ2UmLSdjD0nxv1RhrdCjWjZVrh6-4&_nc_zt=23&_nc_ht=scontent-fra3-2.xx&_nc_gid=JmSM9cKvbuPe0wryTvg7cQ&_nc_ss=7b2a8&oh=00_AQTSAdTB3E8nW-oeXKPUIDbPIwDJkK36YBGX7il_lbshpg&oe=6B0608CE"
+          alt=""
+        >
+      </div>
+      <div class="caption">
+        <strong></strong>
+        <p></p>
+        <span class="tag"></span>
+      </div>
+
+  
+   </div><br>
+   
+   </div><!-- === Кінець сторінки "картки для пам'яті" === -->
+
+          <!-- === Сторінка "Deutsch" === -->
+
+    <div id="State-page" class="page-section">
+
+<!-- === початок хрестика === -->
+       <span onclick="showPage('main-menu')" style="float: right; cursor: pointer; font-size: 30px; font-weight: bold; color: #777; margin: 10px 15px 0 0;">&times;</span>
+<!-- === кінець хрестика === -->
+
+    <h2 class="section-title">🏢🏛️&nbsp;&nbsp;Послуги</h2>
+    <div class="grid">
+
+<!-- Кнопка: Перехід на сайт "Учить немецкий" Deutsch.info-->
+        <a href="https://deutsch.info/courses"target="_blank"class="launcher tooltip">
+         <h3>📚&nbsp;&nbsp;Вчити німецьку </h3>
+         <span class="info">Deutsch.info</span>
+         <span class="tooltip-text"></span>
+        </a> 
+ <!-- Кнопка: Перехід на сайт "Практикуйте німецьку"Гете-інститут-->
+        <a href="https://www.goethe.de/ru/spr/ueb.html"target="_blank"class="launcher tooltip">
+         <h3>🔁&nbsp;&nbsp;Практикуйте німецьку</h3>
+         <span class="info"> Гете-інститут</span>
+         <span class="tooltip-text"></span>
+        </a>          
+<!-- Кнопка 16: Перехід на сайт "Учить немецкий"Deutsche Welle -->
+        <a href="https://learngerman.dw.com/ru/%D1%83%D1%87%D0%B8%D1%82%D1%8C-%D0%BD%D0%B5%D0%BC%D0%B5%D1%86%D0%BA%D0%B8%D0%B9/s-45439445"target="_blank"class="launcher tooltip">
+         <h3>🆎&nbsp;&nbsp;Німецьку онлайн</h3>
+         <span class="info">Онлайн-курси Deutsche Welle</span>
+         <span class="tooltip-text"></span>
+        </a>
+ <!-- Кнопка: Перехід на сайт "Німецька з ручкою-->
+        <a href="https://www.youtube.com/@DeutschmitStift"target="_blank"class="launcher tooltip">
+         <h3>📚&nbsp;&nbsp;Німецька з ручкою</h3>
+         <span class="info">Вивчення німецької</span>
+         <span class="tooltip-text"></span>
+        </a>  
+ <!-- Кнопка: Перехід на сайт "Мій клас-->
+        <a href="https://www.miyklas.com.ua/p/nimecka-mova"target="_blank"class="launcher tooltip">
+         <h3>📚&nbsp;&nbsp;Німецька мова</h3>
+         <span class="info">Мій клас</span>
+         <span class="tooltip-text"></span>
+        </a>                                   
+ 
+              
+   </div><br>
+   
+  
+    </div><!-- === Кінець сторінки "послуги" === -->
+
+       
+           <!-- === Сторінка "Інше" === -->
+
+    <div id="Other-page" class="page-section">
+
+<!-- === початок хрестика === -->
+       <span onclick="showPage('main-menu')" style="float: right; cursor: pointer; font-size: 30px; font-weight: bold; color: #777; margin: 10px 15px 0 0;">&times;</span>
+<!-- === кінець хрестика === -->
+
+    <h2 class="section-title">🤝🛟&nbsp;&nbsp;Інше</h2>
+    <div class="grid">
+
+       
+      <!-- Кнопка: Перехід до файлу "️Реєстрації в internet"-->
+       <a href="https://alexey-kolmakov.github.io/workshop/tabl.html"target="_blank"class="launcher"target="_blank">
+       👩🏻‍💻📇&nbsp;&nbsp;️Реєстрації в internet
+        </a>
+        <!-- Кнопка: "Як отримати посилання на сайт, якщо файл "index.html" завантажив на GitHub" -->
+       <a onclick="showPage('Other-GitHub')" class="launcher"target="_blank">
+       📎&nbsp;&nbsp;️Посилання у GitHub
+       </a>
+<!-- Кнопка: Перехід до файлу "Бесплатное руководство по ремонту для всего, написанное всеми" -->
+       <a href="https://ru.ifixit.com/"class="launcher"target="_blank">
+       🛠️&nbsp;&nbsp;Посібник з ремонту
+       </a>
+       
+   </div><br>
+   
+  
+    </div><!-- === Кінець сторінки "Інше" === -->
+ 
+ 
+  <!-- Сторінка "Як отримати посилання на сайт, якщо файл "index.html" завантажив на GitHub"-->
+   
+    <div id="Other-GitHub" class="page-section">
+    
+ <br><br><br><br><br><br>
+<!-- === початок хрестика === -->
+       <span onclick="showPage('main-menu')" style="float: right; cursor: pointer; font-size: 30px; font-weight: bold; color: #777; margin: 10px 15px 0 0;">&times;</span>
+<!-- === кінець хрестика === -->
+<h2 class="section-title">💫&nbsp;&nbsp;про GitHub</h2>
+     
+     <p style="text-align: center; font-size: 20px; color: blue;">🪎&nbsp;&nbsp;Як отримати посилання на сайт, якщо файл <b><i>index.html</i></b> завантажив на GitHub</p>   <br>
+   
+   <!-- Таблиця -->
+    <table class="info-table">
+        <tr>
+            <td><b>1)</b> Зайти на сайт, <a href="https://github.com/alexey-kolmakov" target="_blank">
+            <b>GitHub Pages</b></a>,у розділ, куди був завантажений файл</td>
+        </tr>
+        
+         <tr>
+            <td><b>2)</b> У верхньому меню (під назвою репозиторію) знайди та натисні на вкладку<a href="https://github.com/alexey-kolmakov/Omnichannel/settings" target="_blank">
+            <b>Settings</b></a> (Налаштування) зі значком шестерні  ⚙️</td>
+        </tr>     
+        
+        <tr>
+            <td><b>3)</b> Перейти в розділ <a href="https://github.com/alexey-kolmakov/Omnichannel/settings/pages" target="_blank">
+            <b>Pages</b></a> лівого бічного меню.</td>
+        </tr>
+        
+         <tr>
+            <td><b>4)</b> Вкажи гілку для збирання. В розділi <b>Build and deployment</b>, у підрозділі <b>Source</b> у списку, що випадає, слід вибрати 
+            <b>Deploy from a branch</b>.<br>Трохи нижче, у графі <b>Branch</b>, треба зміни значення <b>None</b> на 
+            <b>main</b> (або <b>master</b> – залежно від того, як називається основна гілка). 
+            <br>Папку поруч залиш за замовчуванням – <b>/ (root)</b>.
+            </td>
+        </tr>
+        
+        <tr>
+            <td><b>5)</b> Залишається стерегти налаштування натиснувши кнопку <b>Save<b> (Зберегти).
+            </td>
+        </tr>
+        
+         <tr>
+            <td><b>6)</b> Де шукати саме посилання? 
+            <br>– Після натискання кнопки <b>Save</b> сторінці знадобиться близько 1-2 хвилин на складання.
+            <br>Потім потрібно оновити сторінку налаштувань <a href="https://github.com/alexey-kolmakov/Omnichannel/settings/pages" target="_blank">
+            <b>Pages</b></a>.
+            <br>У самому верху з'явиться плашка з текстом: <b>"Your site is live at..."</b> - це і є пряме посилання на сайт!
+            <br>Зазвичай вона виглядає так: <u><i><span style="color: blue;">https://[ім'я-користувача].github.io/[назва-репозиторія]/</span><u></i></td>
+        </tr>
+            
+        <tr>
+            <td><span style="color: red;"><u>Важливий момент</u></span>: файл обов'язково має називатися строго <u>маленькими літерами</u> 
+            <i><b>"index.html"</i></b>. 
+            <br>Якщо назвати його <i><b>I</b>ndex.html </i>або <i>main.html</i>, <b>GitHub</b> не зрозуміє, яку сторінку відкривати першою, 
+            та видасть помилку 404.<br> <br>Коли будуть вноситись зміни до коду або завантажуватиметься оновлений <i><b>"index.html"</i></b>, 
+            адреса сайту залишиться незмінною.
+            <br>Однак є пара важливих нюансів, про які варто пам'ятати під час оновлення: <u>затримка в 1–2 хвилини</u>: 
+            після того, як завантажиться нова версія файлу, зміни на сайті з'являться не миттєво. 
+            <b>GitHub</b> потрібно трохи часу, щоб перезiбрати сторінку. 
+            <br><b>Кеш браузера</b>: якщо завантажилися оновлення, пройшло пару хвилин, ти переходиш за посиланням, а сайт все ще старий 
+            – швидше за все браузер закешував попередню версію. 
+            Просто онови сторінку жорстко: Ctrl+ F5 (Windows) або Cmd + Shift + R (Mac).
+            
+             Якщо вирішиш додати на сайт стилі, картинки або скрипти, просто закидай їх у цей репозиторій, і все буде працювати.</td>
+        </tr>
+        
+    </table>
+     
+
+</div> <br>
+
+<button
+   class="my-button"
+   style="padding: 1px 30px; font-size: 4px; width: 200px;"
+   onclick="showPage('main-menu')">
+   👈 <b><i>Повернутись до меню</i></b>
+   </button>
+   
+<br>
+</div>   
+
+<!-- Кінець сторінки "Як отримати посилання на сайт,
+якщо файл "index.html" завантажив на GitHub"--> 
+
+
+                     
+            <!-- === Сторінка "ПОШТА" === -->
+            <div id="emails-page" class="page-section">
+<!-- === початок хрестика === -->
+       <span onclick="showPage('main-menu')" style="float: right; cursor: pointer; font-size: 30px; font-weight: bold; color: #777; margin: 10px 15px 0 0;">&times;</span>
+<!-- === кінець хрестика === -->
+
+            <h2 class="section-title">📩📤&nbsp;&nbsp;email та файлообмінники</h2>
+               <class="section-title">
+               <div class="grid">
+
+            <a href="https://mail.tutanota.com/mail/OGZFLfq--J-9Tutamail"
+            target="_blank" onclick="showPage('Х-page')" class="launcher tooltip">
+                <span class="icon"></span>
+                <h3>📧&nbsp;&nbsp;alekolm@tutamail.com</h3>
+                <span class="info"></span>
+                <span class="tooltip-text">
+                </span>
+            </a>
+
+            <a href="https://mail.google.com/mail/u/1/#inbox"
+            target="_blank" onclick="showPage('Х-page')" class="launcher tooltip">
+                <span class="icon"></span>
+                <h3>📧&nbsp;&nbsp;alexey.kolmakov@gmail.com</h3>
+                <span class="info"></span>
+                <span class="tooltip-text">
+                </span>
+            </a>
+
+            <a href="https://mail.google.com/mail/u/0/#inbox"
+            target="_blank" onclick="showPage('Х-page')" class="launcher tooltip">
+                <span class="icon"></span>
+                <h3>📧&nbsp;&nbsp;kolmakov.info@gmail.com</h3>
+                <span class="info"></span>
+                <span class="tooltip-text">
+                </span>
+            </a>
+
+            <a href="https://mail.google.com/mail/u/1/#inbox"
+            target="_blank" onclick="showPage('Х-page')" class="launcher tooltip">
+                <span class="icon"></span>
+                <h3>📧&nbsp;&nbsp;oleksijvokamlok@gmail.com</h3>
+                <span class="info"></span>
+                <span class="tooltip-text">
+                </span>
+            </a>
+
+            <a href="https://mail.google.com/mail/u/2/#inbox"
+            target="_blank" onclick="showPage('Х-page')" class="launcher tooltip">
+                <span class="icon"></span>
+                <h3>📧&nbsp;&nbsp;email.kolmakov@gmail.com</h3>
+                <span class="info"></span>
+                <span class="tooltip-text"></span>
+            </a>
+            
+            <a href="https://mail.meta.ua/?"
+            target="_blank" onclick="showPage('Х-page')" class="launcher tooltip">
+                <span class="icon"></span>
+                <h3>📧&nbsp;&nbsp;kolmakow@meta.ua</h3>
+                <span class="info"></span>
+                <span class="tooltip-text"></span>
+            </a>
+
+            <a href="http://www.i.ua/?domain=email.ua"
+            target="_blank" onclick="showPage('Х-page')" class="launcher tooltip">
+                <span class="icon"></span>
+                <h3>📧&nbsp;&nbsp;kolmakov@email.ua</h3>
+                <span class="info"></span>
+                <span class="tooltip-text"></span>
+            </a>
+
+            <a href="https://mail.proton.me/l"
+            target="_blank" onclick="showPage('Х-page')" class="launcher tooltip">
+                <span class="icon"></span>
+                <h3>📧&nbsp;&nbsp;AlexejKolmakov@proton.me</h3>
+                <span class="info"></span>
+                <span class="tooltip-text"></span>
+            </a>
+            
+            <a href="https://snapdrop.net/de/"
+            target="_blank" onclick="showPage('Х-page')" class="launcher tooltip">
+                <span class="icon"></span>
+                <h3>📥📤&nbsp;snapdrop</h3>
+                <span class="info"></span>
+                <span class="tooltip-text"></span>
+            </a> 
+            
+             <a href="https://toffeeshare.com/"
+            target="_blank" onclick="showPage('Х-page')" class="launcher tooltip">
+                <span class="icon"></span>
+                <h3>📥📤&nbsp;toffeeshare</h3>
+                <span class="info"></span>
+                <span class="tooltip-text">
+                </span>
+            </a>         
+
+               
+
+
+       </div><br>
+       
+   <button
+   class="my-button"
+   style="padding: 1px 30px; font-size: 4px; width: 200px;"
+   onclick="showPage('main-menu')">
+   👈 <b><i>Повернутись до меню</i></b>
+   </button>
+</div>   <!-- Кінець сторінки "ПОШТА" -->
+
+<!-- === Сторінка "Платежки" === -->
+   <div id="Payment-page" class="page-section">
+
+<!-- === початок хрестика === -->
+       <span onclick="showPage('main-menu')" style="float: right; cursor: pointer; font-size: 30px; font-weight: bold; color: #777; margin: 10px 15px 0 0;">&times;</span>
+<!-- === кінець хрестика === -->
+
+    <h2 class="section-title">🎲&nbsp;&nbsp;Платежки</h2>
+    <div class="grid">
+
+<!-- Кнопка: Перехід на сайт "Конвертер Валюти НБУ" -->
+        <a href="https://finance.liga.net/ua/currency/converter"target="_blank"class="launcher tooltip">
+         <h3>💱💵&nbsp;&nbsp;Конвертер Валют</h3>
+         <span class="info">Національний банк України</span>
+         <span class="tooltip-text"></span>
+        </a>
+
+<!-- Кнопка: Перехід на сайт зі сканами 2024 року -->
+        <a href="https://ua.files.fm/u/kquevdvvbf?k=865b2529"target="_blank"class="launcher tooltip">
+         <h3> 💶&nbsp;&nbsp;Sparkasse 2024</h3>
+         <span class="info"></span>
+         <span class="tooltip-text"></span>
+        </a>
+
+<!-- Кнопка: Перехід на сайт зі сканами 2025 року -->
+        <a href="https://ua.files.fm/u/6kp2uqd6wm?k=0a36f90e"target="_blank"class="launcher tooltip">
+         <h3> 💶&nbsp;&nbsp;Sparkasse 2025</h3>
+         <span class="info"></span>
+         <span class="tooltip-text"></span>
+        </a>
+
+<!-- Кнопка: Перехід на сайт зі сканами 2026 року -->
+        <a href="https://ua.files.fm/u/umyrxeqsew?k=14266079"target="_blank"class="launcher tooltip">
+         <h3> 💶&nbsp;&nbsp;Sparkasse 2026</h3>
+         <span class="info"></span>
+         <span class="tooltip-text"></span>
+        </a>
+
+<!-- Кнопка: Перехід на сайт зі сканами 20__ року -->
+        <a href=""target="_blank"class="launcher tooltip">
+         <h3></h3>
+         <span class="info"></span>
+         <span class="tooltip-text"></span>
+        </a>
+
+   </div><br>
+   <button
+   class="my-button"
+   style="padding: 1px 30px; font-size: 4px; width: 200px;"
+   onclick="showPage('main-menu')">
+   👈 <b><i>Повернутись до меню</i></b>
+   </button>
+    </div><!-- === Кінець сторінки "Платежки"=== -->
+
+<!-- === Сторінка Linux === -->
+   <div id="Linux-page" class="page-section">
+
+<!-- === початок хрестика === -->
+       <span onclick="showPage('main-menu')" style="float: right; cursor: pointer; font-size: 30px; font-weight: bold; color: #777; margin: 10px 15px 0 0;">&times;</span>
+<!-- === кінець хрестика === -->
+     <h2 class="section-title">🐧&nbsp;&nbsp;Лінукс</h2>
+    <div class="grid">
+
+<!-- Кнопка: Перехід до розділу "Команди zenity" -->
+         <a href="#" onclick="showPage('page-zenity')" class="launcher tooltip">
+         <h3>⚙️&nbsp;&nbsp;Команди zenity</h3>
+         <span class="info"></span>
+         <span class="tooltip-text"></span>
+        </a>
+
+<!-- Кнопка: Перехід до розділу "Команді для Thunar" -->
+         <a href="#" onclick="showPage('page-Thunar')" class="launcher tooltip">
+         <h3>#️⃣&nbsp;&nbsp;Команді для Thunar</h3>
+         <span class="info"></span>
+         <span class="tooltip-text"></span>
+        </a>
+
+<!-- Кнопка: Перехід до розділу "Команды для терминала Linux" -->
+         <a href="#" onclick="showPage('page-terminal')" class="launcher tooltip">
+         <h3>🧊&nbsp;&nbsp;Консольні команди</h3>
+         <span class="info"></span>
+         <span class="tooltip-text"></span>
+        </a>
+
+
+
+   </div><br>
+   <button
+   class="my-button"
+   style="padding: 1px 30px; font-size: 4px; width: 200px;"
+   onclick="showPage('main-menu')">
+   👈 <b><i>Повернутись до меню</i></b>
+   </button>
+    </div><!-- === Кінець сторінки "Linux"=== -->
+
+
+
+<!-- === Сторінка "Моя бібліотека PDF" === -->
+
+<div id="pdf-library" class="page-section">
+
+<span onclick="showPage('main-menu')" style="float: right; cursor: pointer; font-size: 30px; font-weight: bold; color: #777; margin: 10px 15px 0 0;">&times;</span>
+
+    <h2 class="section-title">
+        📚&nbsp;&nbsp;Моя бібліотека PDF
+    </h2>
+
+    <div class="grid" id="library">
+
+    </div><br>
+   <button
+   class="my-button"
+   style="padding: 1px 30px; font-size: 4px; width: 200px;"
+   onclick="showPage('main-menu')">
+   👈 <b><i>Повернутись до меню</i></b>
+   </button>
+
+</div>
+
+  </div> <!-- Кінець .content -->
+</div> <!-- Кінець .menu -->
+
+
+<!-- === СТОРІНКА: "Інформація" === -->
+<div id="my-alert-overlay" class="alert-overlay">
+    <div class="alert-box" style="position: relative; padding: 40px; background-color: #ffffff !important; border-radius: 12px; max-width: 550px; margin: 120px auto; box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: block !important; border: none !important;">
+
+
+
+        <div class="alert-content" style="font-family: sans-serif; line-height: 1.6; color: #333333 !important;">
+<!-- === блок крестика === -->
+<span class="close-icon" id="close-x-btn" style="position: absolute; top: 15px; right: 20px; cursor: pointer; font-size: 30px; font-weight: bold; color: #777777 !important; z-index: 9999;">&times;</span>
+<!-- === конец блока крестика === -->
+
+            <h2 style="margin-top: 0; color: #222222 !important;  border: 1px solid #ccc; width: 90%; margin-bottom: 20px;font-size: 22px;">Омніканальність</h2>
+            <p style="font-size: 14px; margin-bottom: 26px;">
+            <div style="text-align: center;">            
+У сучасному динамічному світі, де технології проникають у всі сфери нашого життя, ми більше не задовольняємося розрізненими точками контакту із сервісом чи документом.</div>
+<br>Саме тут &#171;на сцену виходить&#187; 
+
+<div style="text-align: center;"><b><u>Омніканальність</b></u></div>Це стратегічний підхід, що поєднує різноманітні канали комунікації в єдину, безшовну екосистему.</div>
+
+<div style="text-align: center;">Створенням цього проекту я прагнув втілити ці принципи на практиці, намагаючись впорядкувати традиційний інформаційний хаос. Це стосується як моїх особистих "інформаційних потреб", так і організації різноманітних сканів, документів, фотографій та інших цифрових артефактів, які накопичуються в сучасному житті.</div></p>
+
+
+</div>
+
+       </div>
+       
+    </div>
+    
+    
+</div><!-- Кінець сторінки "Інформація" -->
+
+<script>
+// =================================================================
+// 1. УПРАВЛІННЯ СТИЛЯМИ ДЛЯ МОБІЛЬНИХ (FIX MOBILE)
+// =================================================================
+const style = document.createElement('style');
+style.innerHTML = `
+    .page-section { display: none !important; opacity: 0; transition: opacity 0.3s; }
+    .page-section.active { display: block !important; opacity: 1; }
+    @media (max-width: 768px) {
+        .page-section.active { position: relative; z-index: 1; }
+        body { overflow-x: hidden; }
+    }
+`;
+document.head.appendChild(style);
+
+
+// =================================================================
+// 2. ФУНКЦІЯ ПЕРЕКЛЮЧЕННЯ СТОРІНОК (showPage)
+// =================================================================
+function showPage(pageId) {
+    const sections = document.querySelectorAll('.page-section');
+    sections.forEach(sec => sec.classList.remove('active'));
+
+    if (pageId === 'main-menu') return;
+
+    const target = document.getElementById(pageId);
+    if (target) {
+        target.classList.add('active');
+        console.log("Открыта страница:", pageId);
+        // Автоматичне прокручування вгору з плавною анімацією
+        setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+    }
+}
+
+
+// =================================================================
+// 3. ФУНКЦІЯ КРАСИВОГО КОПІЮВАННЯ В БУФЕР
+// =================================================================
+function copyToClipboard(buttonElement, text) {
+    if (!text) return;
+    navigator.clipboard.writeText(text).then(() => {
+        const originalText = buttonElement.innerText;
+        buttonElement.innerText = "Скопійовано!";
+        buttonElement.style.background = "#4caf50"; // Зеленіє за успіху
+        buttonElement.style.color = "white";
+
+        setTimeout(() => {
+            buttonElement.innerText = originalText;
+            buttonElement.style.background = "";
+            buttonElement.style.color = "";
+        }, 2000);
+    }).catch(err => alert("Ошибка копирования: " + err));
+}
+
+
+// =================================================================
+// 4. ГОЛОВНИЙ БЛОК ІНІЦІАЛІЗАЦІЇ (Запуск після завантаження сторінки)
+// =================================================================
+document.addEventListener('DOMContentLoaded', () => {
+
+    // --- НАЛАШТУВАННЯ ПОШУКУ ПО ТАБЛИЦІ---
+    const searchInput = document.getElementById('search-table');
+    const table = document.getElementById('myTable');
+
+    if (searchInput && table) {
+        searchInput.addEventListener('keyup', function() {
+            const filter = searchInput.value.toUpperCase();
+            const rows = table.getElementsByTagName('tr');
+
+            for (let i = 1; i < rows.length; i++) {
+                const rowText = rows[i].textContent || rows[i].innerText;
+                // Якщо рядок містить текст -> показуємо, інакше приховуємо
+                rows[i].style.display = rowText.toUpperCase().indexOf(filter) > -1 ? "" : "none";
+            }
+        });
+        console.log("✅ Пошук активовано!");
+    } else {
+        console.error("❌ ПОМИЛКА: Не знайдено поле пошуку чи таблиця!");
+    }
+
+    // ---НАЛАШТУВАННЯ КНОПОК КОПІЮВАННЯ ---
+    const copyButtons = document.querySelectorAll('.copy-btn');
+    copyButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const command = this.getAttribute('data-command');
+            if (command) {
+                copyToClipboard(this, command);
+            }
+        });
+    });
+    console.log("✅ Кнопки копіювання активовані!");
+
+    // ---НАЛАШТУВАННЯ СПЛИВАЮЧОГО ВІКНА (З ХРЕСТИКОМ) ---
+    const logoTrigger = document.getElementById('logo-trigger');
+    const alertOverlay = document.getElementById('my-alert-overlay');
+    const closeAlertBtn = document.getElementById('close-alert-btn');
+    const closeXBtn = document.getElementById('close-x-btn'); // Новий хрестик!
+
+    if (logoTrigger && alertOverlay) {
+        // Відкрити вікно
+        logoTrigger.addEventListener('click', () => alertOverlay.classList.add('show'));
+
+      // Функція закриття вікна
+        const closeBox = () => alertOverlay.classList.remove('show');
+
+        // Закриваємо по кнопці "Зрозуміло" (якщо вона є)
+        if (closeAlertBtn) closeAlertBtn.addEventListener('click', closeBox);
+
+       // Закриваємо на кліку на Хрестик (якщо він є)
+        if (closeXBtn) closeXBtn.addEventListener('click', closeBox);
+
+       // Закриваємо при натисканні на темну область навколо вікна
+        alertOverlay.addEventListener('click', (event) => {
+            if (event.target === alertOverlay) closeBox();
+        });
+    }
+
+    console.log("✅ Усі системи запущені штатно.");
+});
+</script>
+<script>
+
+const library = document.getElementById("library");
+
+function addBook(title, url) {
+
+    library.innerHTML += `
+        <div class="card pdf-book">
+            <a href="${url}" target="_blank">
+                ${title}
+            </a>
+        </div>
+    `;
+
+}
+
+addBook("📘 Офіційна подорож Linux", "https://labex.io/linuxjourney");
+addBook("📗 Лінус Бенедикт Торвальдс", "https://en.wikipedia.org/wiki/Linus_Torvalds");
+addBook("📙 Що таке Лінукс Шелл", "https://labex.io/lesson/the-shell");
+addBook("📘 Файлові дозволи", "https://labex.io/lesson/file-permissions");
+addBook("📗 Розуміння Linux-процесів", "https://labex.io/lesson/monitor-processes-ps-command");
+addBook("📙 Що таке пакети Linux", "https://labex.io/lesson/software-distribution");
+addBook("📘 Скрипт оболонки Bash", "https://linuxhandbook.com/courses/bash-beginner/run-shell-script/");
+addBook("📗 Найновіші навчальні посібники", "https://linuxhandbook.com/blog/");
+addBook("📙 Основы HTML", "https://developer.mozilla.org/ru/docs/Learn_web_development/Getting_started/Your_first_website/Creating_the_content");
+addBook("📘 Программирование с нуля", "https://code-basics.com/ru");
+addBook("📗 Самоучитель HTML4", "https://htmlbook.ru/samhtml");
+addBook("📙 Основы работы с терминалом", "https://www.8host.com/blog/osnovy-raboty-s-terminalom-linux/");
+
+</script>
+
+<!-- 1. ПЕРЕКОНАЙТЕСЯ, ЩО ТАК ЗРОБЛЕНО В HTML -->
+<section id="page-tables" class="page-section">
+    <h2 style="text-align: center; color: #4a148c;">Мої таблиці</h2>
+
+    <!-- Поле пошуку (обов'язково id="search-table") -->
+    <input type="text" id="search-table" placeholder="🔍 Введіть команду або опис..." onkeyup="filterTable()">
+
+    <div class="table-container">
+       <!-- Таблиця (обов'язково id="myTable") -->
+        <table id="myTable">
+            <thead>
+                <tr>
+                    <th>Команда</th>
+                    <th>Опис</th>
+                    <th>Дія</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>echo "Привіт"</td>
+                    <td>Виведення тексту</td>
+                    <td><button class="copy-btn" data-command='echo "Привет"'>Копіювати</button></td>
+                </tr>
+                <tr>
+                    <td>ls -la</td>
+                    <td>Список файлів</td>
+                    <td><button class="copy-btn" data-command="ls -la">Копіювати</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+<script>
+const c = document.createElement('canvas');
+c.width = c.height = 180;
+const x = c.getContext('2d');
+
+// градиент
+const g = x.createLinearGradient(0, 0, 180, 180);
+g.addColorStop(0, '#7e57c2');
+g.addColorStop(1, '#42a5f5');
+x.fillStyle = g;
+x.fillRect(0, 0, 180, 180);
+
+// буквы
+x.fillStyle = '#fff';
+x.font = 'bold 100px Arial';
+x.textAlign = 'center';
+x.textBaseline = 'middle';
+x.fillText('OK', 90, 98);
+
+document.querySelector('link[rel="apple-touch-icon"]').href = c.toDataURL('image/png');
+</script>
+</body>
+</html>
